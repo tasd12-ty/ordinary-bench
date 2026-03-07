@@ -174,6 +174,9 @@ def main():
         if args.split:
             scene_ids = [s for s in scene_ids if s.startswith(args.split)]
 
+    # 按文件大小降序，让 batch 多的场景先跑，提高并发利用率
+    scene_ids.sort(key=lambda s: (questions_dir / f"{s}.json").stat().st_size, reverse=True)
+
     if not scene_ids:
         logger.error("未找到场景文件")
         sys.exit(1)

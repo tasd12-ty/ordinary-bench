@@ -24,7 +24,7 @@ CONFIG = {
 
     # 生成参数
     "temperature": 0.0,
-    "max_tokens": 4096,
+    "max_tokens": int(os.environ.get("VLM_MAX_TOKENS", "65536")),
 
     # 路径（相对于 API-test/ 目录）
     "questions_dir": "../output/questions",                    # batch 模式输入

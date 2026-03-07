@@ -68,12 +68,28 @@ def call_vlm(
             if extra_body:
                 kwargs["extra_body"] = extra_body
             resp = client.chat.completions.create(**kwargs)
-            content = resp.choices[0].message.content
+            msg = resp.choices[0].message
+            content = msg.content
             if content is None:
-                logger.warning("VLM 返回空内容，视为可重试错误")
-                raise APIError("VLM returned None content", response=None, body=None)
+                reasoning = getattr(msg, 'reasoning_content', None)
+                if reasoning:
+                    logger.warning("content 为空但有 reasoning_content，尝试关闭思考模式重试")
+                    try:
+                        no_think_kwargs = dict(kwargs)
+                        no_think_kwargs.setdefault("extra_body", {})
+                        no_think_kwargs["extra_body"]["chat_template_kwargs"] = {"enable_thinking": False}
+                        resp2 = client.chat.completions.create(**no_think_kwargs)
+                        content2 = resp2.choices[0].message.content
+                        if content2:
+                            return content2
+                    except Exception as e2:
+                        logger.warning(f"关闭思考模式重试失败: {e2}")
+                    logger.warning("关闭思考模式仍无有效 content，继续常规重试")
+                else:
+                    logger.warning("VLM 返回空内容，视为可重试错误")
+                raise ValueError("VLM returned None content")
             return content
-        except (RateLimitError, APITimeoutError, APIConnectionError) as e:
+        except (RateLimitError, APITimeoutError, APIConnectionError, ValueError) as e:
             delay = min(retry_base_delay * (2 ** attempt), 60.0)
             logger.warning(f"重试 {attempt+1}/{max_retries}，{type(e).__name__}，等待 {delay:.1f}s")
             time.sleep(delay)

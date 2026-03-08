@@ -103,6 +103,21 @@ def call_vlm(
     raise RuntimeError(f"调用失败，已重试 {max_retries} 次")
 
 
+def build_multi_view_messages(system_prompt: str, user_text: str, images_b64: list) -> list:
+    """构造多图 OpenAI vision 格式的消息列表（system + user with multiple images）。"""
+    content = []
+    for img_b64 in images_b64:
+        content.append({
+            "type": "image_url",
+            "image_url": {"url": f"data:image/png;base64,{img_b64}"},
+        })
+    content.append({"type": "text", "text": user_text})
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": content},
+    ]
+
+
 def make_client(base_url: str, api_key: str) -> OpenAI:
     """创建 OpenAI 客户端实例。切换模型只需改 base_url 和 api_key。"""
     return OpenAI(base_url=base_url, api_key=api_key)

@@ -23,6 +23,27 @@ Example:
 [{"qid": "qrr_0001", "answer": "<"}, {"qid": "trr_0001", "answer": 7}]"""
 
 
+MULTI_VIEW_SYSTEM_PROMPT = """\
+You are a spatial reasoning assistant analyzing a 3D scene from multiple viewpoints.
+You will receive {n_views} images of the same scene taken from different camera angles,
+followed by a list of objects visible in the scene and a set of spatial questions.
+
+Analyze ALL provided views to determine spatial relationships more accurately.
+
+Question types:
+1. QRR (distance comparison): Compare the 3D distance between two pairs of objects.
+   Answer with exactly one of: "<" (first pair closer), "~=" (approximately equal), ">" (first pair farther).
+2. TRR (clock direction): Imagine standing at ref1, facing toward ref2 (12 o'clock direction).
+   Answer with the clock hour (integer 1-12) where the target object appears.
+
+Respond ONLY with a JSON array. Each element must have "qid" and "answer".
+For QRR: answer is a string "<", "~=", or ">".
+For TRR: answer is an integer 1-12.
+
+Example:
+[{{"qid": "qrr_0001", "answer": "<"}}, {{"qid": "trr_0001", "answer": 7}}]"""
+
+
 def format_batch_user_prompt(objects: list, questions: list) -> str:
     """
     构造 batch 模式的 user prompt。

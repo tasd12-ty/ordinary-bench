@@ -28,6 +28,7 @@ CONFIG = {
 
     # 路径（相对于 API-test/ 目录）
     "questions_dir": "../output/questions",                    # batch 模式输入
-    "images_dir": "../../data-gen/output/images/single_view",  # 场景图片
+    "images_dir": "../../data-gen/output/images/single_view",  # 单视角场景图片
+    "multi_view_images_dir": "../../data-gen/output/images/multi_view",  # 多视角场景图片
     "results_dir": "../output/results",                        # 结果输出
 }

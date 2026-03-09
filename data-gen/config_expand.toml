@@ -1,0 +1,62 @@
+# ordinary-bench 增量扩充配置
+# 每个 split 生成 90 个新场景，配合 --start-idx 10 使用
+# 命令: python generate.py --config config_expand.toml --start-idx 10 --workers 4
+
+[blender]
+executable = "/mnt/d/tools/blender/blender.exe"
+use_gpu = true
+
+[rendering]
+width = 480
+height = 320
+samples = 256
+n_views = 4
+camera_distance = 12.0
+elevation = 30.0
+azimuth_start = 45.0
+
+[objects]
+min_count = 4
+max_count = 10
+min_dist = 0.25
+margin = 0.4
+
+[output]
+dir = "./output"
+seed = 42
+
+# 每种物体数量 90 个新场景，配合 --start-idx 10 生成编号 10-99
+[splits.n04]
+n_scenes = 90
+min_objects = 4
+max_objects = 4
+
+[splits.n05]
+n_scenes = 90
+min_objects = 5
+max_objects = 5
+
+[splits.n06]
+n_scenes = 90
+min_objects = 6
+max_objects = 6
+
+[splits.n07]
+n_scenes = 90
+min_objects = 7
+max_objects = 7
+
+[splits.n08]
+n_scenes = 90
+min_objects = 8
+max_objects = 8
+
+[splits.n09]
+n_scenes = 90
+min_objects = 9
+max_objects = 9
+
+[splits.n10]
+n_scenes = 90
+min_objects = 10
+max_objects = 10

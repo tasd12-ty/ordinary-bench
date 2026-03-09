@@ -189,7 +189,8 @@ def main():
   # Inject start_idx into all splits for incremental generation
   if args.start_idx > 0:
     for split_cfg in cfg["splits"].values():
-      split_cfg["start_idx"] = args.start_idx
+      if "start_idx" not in split_cfg:
+        split_cfg["start_idx"] = args.start_idx
 
   if not cfg["splits"]:
     logger.error("No splits configured. Check config.toml or use --preset.")

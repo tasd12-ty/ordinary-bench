@@ -86,7 +86,7 @@ def render_split(split_name: str, split_cfg: dict, cfg: dict) -> Path:
     "--shape_dir", shape_dir,
     "--material_dir", material_dir,
     "--output_dir", blender_output,
-    "--split", split_name,
+    "--split", split_cfg.get("split_prefix", split_name),
     "--num_images", str(n_scenes),
     "--min_objects", str(min_obj),
     "--max_objects", str(max_obj),
@@ -132,6 +132,7 @@ def organize_split(
   render_output: Path,
   output_dir: Path,
   n_views: int,
+  effective_split: str = None,
 ) -> list:
   """
   Copy images from Blender output to final directory structure.
@@ -140,7 +141,9 @@ def organize_split(
   Returns:
       List of split entry dicts.
   """
-  scenes_file = render_output / f"{split_name}_scenes.json"
+  if effective_split is None:
+    effective_split = split_name
+  scenes_file = render_output / f"{effective_split}_scenes.json"
   if not scenes_file.exists():
     logger.error(f"Scenes file not found: {scenes_file}")
     return []
@@ -202,9 +205,11 @@ def build_split(split_name: str, split_cfg: dict, cfg: dict) -> dict:
   """
   output_dir = Path(cfg["output"]["dir"])
   n_views = cfg["rendering"]["n_views"]
+  effective_split = split_cfg.get("split_prefix", split_name)
 
   render_output = render_split(split_name, split_cfg, cfg)
-  entries = organize_split(split_name, render_output, output_dir, n_views)
+  entries = organize_split(split_name, render_output, output_dir, n_views,
+                           effective_split=effective_split)
 
   # Save split index
   split_file = output_dir / "splits" / f"{split_name}.json"

@@ -1,0 +1,341 @@
+# ordinary-bench 高并行增量扩充配置
+# 将 7 个 split 拆为 42 个子 split，每个 15 场景，支持 20+ 并行 worker
+# 命令: python generate.py --config config_expand_parallel.toml --gpu --workers 20
+
+[blender]
+executable = "blender"
+use_gpu = true
+
+[rendering]
+width = 480
+height = 320
+samples = 256
+n_views = 4
+camera_distance = 12.0
+elevation = 30.0
+azimuth_start = 45.0
+
+[objects]
+min_count = 4
+max_count = 10
+min_dist = 0.25
+margin = 0.4
+
+[output]
+dir = "./output"
+seed = 42
+
+# ═══════════════════════════════════════════
+# n04: 6 sub-splits × 15 scenes = 90 (idx 10-99)
+# ═══════════════════════════════════════════
+[splits.n04_a]
+n_scenes = 15
+min_objects = 4
+max_objects = 4
+start_idx = 10
+split_prefix = "n04"
+
+[splits.n04_b]
+n_scenes = 15
+min_objects = 4
+max_objects = 4
+start_idx = 25
+split_prefix = "n04"
+
+[splits.n04_c]
+n_scenes = 15
+min_objects = 4
+max_objects = 4
+start_idx = 40
+split_prefix = "n04"
+
+[splits.n04_d]
+n_scenes = 15
+min_objects = 4
+max_objects = 4
+start_idx = 55
+split_prefix = "n04"
+
+[splits.n04_e]
+n_scenes = 15
+min_objects = 4
+max_objects = 4
+start_idx = 70
+split_prefix = "n04"
+
+[splits.n04_f]
+n_scenes = 15
+min_objects = 4
+max_objects = 4
+start_idx = 85
+split_prefix = "n04"
+
+# ═══════════════════════════════════════════
+# n05: 6 sub-splits × 15 scenes = 90 (idx 10-99)
+# ═══════════════════════════════════════════
+[splits.n05_a]
+n_scenes = 15
+min_objects = 5
+max_objects = 5
+start_idx = 10
+split_prefix = "n05"
+
+[splits.n05_b]
+n_scenes = 15
+min_objects = 5
+max_objects = 5
+start_idx = 25
+split_prefix = "n05"
+
+[splits.n05_c]
+n_scenes = 15
+min_objects = 5
+max_objects = 5
+start_idx = 40
+split_prefix = "n05"
+
+[splits.n05_d]
+n_scenes = 15
+min_objects = 5
+max_objects = 5
+start_idx = 55
+split_prefix = "n05"
+
+[splits.n05_e]
+n_scenes = 15
+min_objects = 5
+max_objects = 5
+start_idx = 70
+split_prefix = "n05"
+
+[splits.n05_f]
+n_scenes = 15
+min_objects = 5
+max_objects = 5
+start_idx = 85
+split_prefix = "n05"
+
+# ═══════════════════════════════════════════
+# n06: 6 sub-splits × 15 scenes = 90 (idx 10-99)
+# ═══════════════════════════════════════════
+[splits.n06_a]
+n_scenes = 15
+min_objects = 6
+max_objects = 6
+start_idx = 10
+split_prefix = "n06"
+
+[splits.n06_b]
+n_scenes = 15
+min_objects = 6
+max_objects = 6
+start_idx = 25
+split_prefix = "n06"
+
+[splits.n06_c]
+n_scenes = 15
+min_objects = 6
+max_objects = 6
+start_idx = 40
+split_prefix = "n06"
+
+[splits.n06_d]
+n_scenes = 15
+min_objects = 6
+max_objects = 6
+start_idx = 55
+split_prefix = "n06"
+
+[splits.n06_e]
+n_scenes = 15
+min_objects = 6
+max_objects = 6
+start_idx = 70
+split_prefix = "n06"
+
+[splits.n06_f]
+n_scenes = 15
+min_objects = 6
+max_objects = 6
+start_idx = 85
+split_prefix = "n06"
+
+# ═══════════════════════════════════════════
+# n07: 6 sub-splits × 15 scenes = 90 (idx 10-99)
+# ═══════════════════════════════════════════
+[splits.n07_a]
+n_scenes = 15
+min_objects = 7
+max_objects = 7
+start_idx = 10
+split_prefix = "n07"
+
+[splits.n07_b]
+n_scenes = 15
+min_objects = 7
+max_objects = 7
+start_idx = 25
+split_prefix = "n07"
+
+[splits.n07_c]
+n_scenes = 15
+min_objects = 7
+max_objects = 7
+start_idx = 40
+split_prefix = "n07"
+
+[splits.n07_d]
+n_scenes = 15
+min_objects = 7
+max_objects = 7
+start_idx = 55
+split_prefix = "n07"
+
+[splits.n07_e]
+n_scenes = 15
+min_objects = 7
+max_objects = 7
+start_idx = 70
+split_prefix = "n07"
+
+[splits.n07_f]
+n_scenes = 15
+min_objects = 7
+max_objects = 7
+start_idx = 85
+split_prefix = "n07"
+
+# ═══════════════════════════════════════════
+# n08: 6 sub-splits × 15 scenes = 90 (idx 10-99)
+# ═══════════════════════════════════════════
+[splits.n08_a]
+n_scenes = 15
+min_objects = 8
+max_objects = 8
+start_idx = 10
+split_prefix = "n08"
+
+[splits.n08_b]
+n_scenes = 15
+min_objects = 8
+max_objects = 8
+start_idx = 25
+split_prefix = "n08"
+
+[splits.n08_c]
+n_scenes = 15
+min_objects = 8
+max_objects = 8
+start_idx = 40
+split_prefix = "n08"
+
+[splits.n08_d]
+n_scenes = 15
+min_objects = 8
+max_objects = 8
+start_idx = 55
+split_prefix = "n08"
+
+[splits.n08_e]
+n_scenes = 15
+min_objects = 8
+max_objects = 8
+start_idx = 70
+split_prefix = "n08"
+
+[splits.n08_f]
+n_scenes = 15
+min_objects = 8
+max_objects = 8
+start_idx = 85
+split_prefix = "n08"
+
+# ═══════════════════════════════════════════
+# n09: 6 sub-splits × 15 scenes = 90 (idx 10-99)
+# ═══════════════════════════════════════════
+[splits.n09_a]
+n_scenes = 15
+min_objects = 9
+max_objects = 9
+start_idx = 10
+split_prefix = "n09"
+
+[splits.n09_b]
+n_scenes = 15
+min_objects = 9
+max_objects = 9
+start_idx = 25
+split_prefix = "n09"
+
+[splits.n09_c]
+n_scenes = 15
+min_objects = 9
+max_objects = 9
+start_idx = 40
+split_prefix = "n09"
+
+[splits.n09_d]
+n_scenes = 15
+min_objects = 9
+max_objects = 9
+start_idx = 55
+split_prefix = "n09"
+
+[splits.n09_e]
+n_scenes = 15
+min_objects = 9
+max_objects = 9
+start_idx = 70
+split_prefix = "n09"
+
+[splits.n09_f]
+n_scenes = 15
+min_objects = 9
+max_objects = 9
+start_idx = 85
+split_prefix = "n09"
+
+# ═══════════════════════════════════════════
+# n10: 6 sub-splits × 15 scenes = 90 (idx 10-99)
+# ═══════════════════════════════════════════
+[splits.n10_a]
+n_scenes = 15
+min_objects = 10
+max_objects = 10
+start_idx = 10
+split_prefix = "n10"
+
+[splits.n10_b]
+n_scenes = 15
+min_objects = 10
+max_objects = 10
+start_idx = 25
+split_prefix = "n10"
+
+[splits.n10_c]
+n_scenes = 15
+min_objects = 10
+max_objects = 10
+start_idx = 40
+split_prefix = "n10"
+
+[splits.n10_d]
+n_scenes = 15
+min_objects = 10
+max_objects = 10
+start_idx = 55
+split_prefix = "n10"
+
+[splits.n10_e]
+n_scenes = 15
+min_objects = 10
+max_objects = 10
+start_idx = 70
+split_prefix = "n10"
+
+[splits.n10_f]
+n_scenes = 15
+min_objects = 10
+max_objects = 10
+start_idx = 85
+split_prefix = "n10"

@@ -165,7 +165,11 @@ python generate.py --config config_expand.toml --start-idx 10 --workers 4
 
 ### 步骤 3：重建 Split 索引
 
-增量生成后，split 索引文件会被覆盖为仅包含新场景。运行以下脚本重建完整索引：
+增量生成后需要重建 split 索引。有两种方式：
+
+**方式 A**（推荐）：增量生成会自动合并 split 索引（`start_idx > 0` 时自动追加而非覆盖）。
+
+**方式 B**：手动重建完整索引：
 
 ```bash
 python rebuild_splits.py --output-dir ./output
@@ -195,19 +199,52 @@ python generate_questions.py --data ../data-gen/output
 # 从项目根目录开始
 cd data-gen
 
-# 1. 增量生成
+# 1. 增量生成（split 索引会自动合并）
 python generate.py --config config_expand.toml --start-idx 10 --workers 4
 
-# 2. 重建索引
-python rebuild_splits.py --output-dir ./output
-
-# 3. 生成问题
+# 2. 生成问题
 cd ../VLM-test
 python generate_questions.py --data ../data-gen/output
 
-# 4. 验证
+# 3. 验证
 python generate_questions.py --counts
 ```
+
+### 服务器部署（Linux 无头渲染）
+
+```bash
+# 1. 安装 Blender（推荐下载官方包）
+wget https://download.blender.org/release/Blender4.2/blender-4.2.0-linux-x64.tar.xz
+tar -xf blender-4.2.0-linux-x64.tar.xz
+export PATH=$PATH:$(pwd)/blender-4.2.0-linux-x64
+
+# 2. 验证
+blender --version
+
+# 3. 生成（用 --blender 覆盖 config.toml 中的路径）
+cd data-gen
+python generate.py --blender blender --gpu --workers 7
+```
+
+支持 CUDA/OptiX/HIP GPU 加速，需安装对应驱动。
+
+### 生成耗时参考
+
+基于实测（macOS M 系列，CPU 渲染，256 samples）：
+
+| 场景数 | 耗时 | 每场景 |
+|--------|------|--------|
+| 70 | ~11 分钟 | ~9.2 秒 |
+| 700 | ~1.8 小时（预估） | ~9.2 秒 |
+| 5,000 | ~13 小时（预估） | ~9.2 秒 |
+
+GPU 渲染可加速约 3 倍。并行 worker 可进一步缩短墙钟时间。
+
+### 随机种子与可复现性
+
+`config.toml` 中的 `seed = 42` 与 `--start-idx` 组合确保：
+- 同一 seed + start_idx 生成完全相同的场景（可复现）
+- 不同 start_idx 生成不同场景（增量不重复）
 
 ### 700 场景的问题数量估算
 
@@ -339,9 +376,29 @@ VLM_MODEL="qwen/qwen-2.5-vl-72b-instruct" python run_batch.py
 # Qwen3-VL-235B（思考模型）
 VLM_MODEL="qwen/qwen3-vl-235b-a22b-thinking" python run_batch.py
 
-# 本地模型
-VLM_BASE_URL="http://localhost:8000/v1" VLM_MODEL="local-model" python run_batch.py
+# 本地模型（SGLang 部署）
+VLM_BASE_URL="http://localhost:8000/v1" VLM_API_KEY="EMPTY" VLM_MODEL="my-model" python run_batch.py
 ```
+
+### 思考模型（SGLang + Qwen 3.5 等）
+
+使用 SGLang 部署思考模型时，需注意：
+
+```bash
+# SGLang 启动参数（需要 --reasoning-parser）
+sglang serve --model-path /path/to/qwen3.5 --reasoning-parser qwen3 --tp-size 8
+
+# 评测时增大 max_tokens（思考模型需要大量 token）
+VLM_BASE_URL="http://localhost:8000/v1" \
+VLM_API_KEY="EMPTY" \
+VLM_MODEL="qwen3p5-122a10b" \
+VLM_MAX_TOKENS=65536 \
+VLM_CONCURRENCY=16 \
+VLM_TIMEOUT=60000 \
+python run_batch.py
+```
+
+`max_tokens` 包含思考 token + 回答 token 的总量。如果思考用完预算导致 content 为空，系统会自动用 `enable_thinking=False` 重试。
 
 ### 查看结果
 
@@ -355,6 +412,8 @@ VLM-test/output/results/<model>/
 ```
 
 其中模型名中的 `/` 替换为 `--`（如 `qwen/qwen3-vl` → `qwen--qwen3-vl`）。
+
+多视角模式结果在 `<model>_multi_view/` 目录下。
 
 ### 评测指标
 

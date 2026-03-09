@@ -130,8 +130,11 @@ def add_object(object_dir, name, scale, loc, theta=0):
     if obj.name.startswith(name):
       count += 1
 
-  filename = os.path.join(object_dir, '%s.blend' % name, 'Object', name)
-  bpy.ops.wm.append(filename=filename)
+  blend_path = os.path.join(object_dir, '%s.blend' % name)
+  inner_path = os.path.join('Object', name)
+  bpy.ops.wm.append(filepath=os.path.join(blend_path, inner_path),
+                     directory=os.path.join(blend_path, 'Object'),
+                     filename=name)
 
   # Give it a new name to avoid conflicts
   new_name = '%s_%d' % (name, count)
@@ -164,8 +167,10 @@ def load_materials(material_dir):
   for fn in os.listdir(material_dir):
     if not fn.endswith('.blend'): continue
     name = os.path.splitext(fn)[0]
-    filepath = os.path.join(material_dir, fn, 'NodeTree', name)
-    bpy.ops.wm.append(filename=filepath)
+    blend_path = os.path.join(material_dir, fn)
+    bpy.ops.wm.append(filepath=os.path.join(blend_path, 'NodeTree', name),
+                       directory=os.path.join(blend_path, 'NodeTree'),
+                       filename=name)
 
 
 def add_material(name, **properties):

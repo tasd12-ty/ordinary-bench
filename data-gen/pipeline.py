@@ -100,6 +100,7 @@ def render_split(split_name: str, split_cfg: dict, cfg: dict) -> Path:
     "--height", str(rendering["height"]),
     "--render_num_samples", str(rendering["samples"]),
     "--start_idx", str(start_idx),
+    "--seed", str(cfg["output"].get("seed", 42)),
   ]
 
   if cfg["blender"].get("use_gpu", False):
@@ -114,7 +115,7 @@ def render_split(split_name: str, split_cfg: dict, cfg: dict) -> Path:
       cmd,
       capture_output=True,
       text=True,
-      timeout=3600 * 4,
+      timeout=max(3600, n_scenes * 300),
     )
     if result.returncode != 0:
       logger.error(f"Blender stderr:\n{result.stderr[-2000:]}")
@@ -205,14 +206,22 @@ def build_split(split_name: str, split_cfg: dict, cfg: dict) -> dict:
   """
   output_dir = Path(cfg["output"]["dir"])
   n_views = cfg["rendering"]["n_views"]
+  start_idx = split_cfg.get("start_idx", 0)
   effective_split = split_cfg.get("split_prefix", split_name)
 
   render_output = render_split(split_name, split_cfg, cfg)
   entries = organize_split(split_name, render_output, output_dir, n_views,
                            effective_split=effective_split)
 
-  # Save split index
+  # Save split index (merge with existing if incremental)
   split_file = output_dir / "splits" / f"{split_name}.json"
+  if start_idx > 0 and split_file.exists():
+    with open(split_file) as f:
+      existing = json.load(f)
+    new_ids = {e["scene_id"] for e in entries}
+    merged = [e for e in existing if e["scene_id"] not in new_ids] + entries
+    merged.sort(key=lambda e: e["scene_id"])
+    entries = merged
   with open(split_file, 'w') as f:
     json.dump(entries, f, indent=2)
   logger.info(f"Saved split index: {split_file} ({len(entries)} scenes)")

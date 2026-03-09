@@ -561,7 +561,10 @@ def add_random_objects(directions, num_objects, args, camera, _retry_count=0):
 
 def main(args):
     """Main entry point for multi-view rendering."""
-    print(f"Starting multi-view rendering: {args.num_images} scenes, {args.n_views} views each")
+    # Seed for reproducibility: base seed + start_idx ensures different
+    # incremental batches produce different but deterministic scenes
+    random.seed(args.seed + args.start_idx)
+    print(f"Starting multi-view rendering: {args.num_images} scenes, {args.n_views} views each (seed={args.seed + args.start_idx})")
 
     # Create multi-view config
     mv_config = MultiViewConfig(
@@ -659,6 +662,8 @@ parser.add_argument('--output_dir', default='../output/multiview/',
 parser.add_argument('--start_idx', default=0, type=int)
 parser.add_argument('--num_images', default=5, type=int)
 parser.add_argument('--split', default='train')
+parser.add_argument('--seed', default=42, type=int,
+    help="Random seed for reproducible scene generation")
 
 # Render settings
 parser.add_argument('--use_gpu', default=0, type=int)

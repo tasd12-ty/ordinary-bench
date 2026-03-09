@@ -167,6 +167,10 @@ def main():
     help="Number of parallel Blender processes (default: 1)",
   )
   parser.add_argument(
+    "--start-idx", type=int, default=0,
+    help="Scene index offset for incremental generation (e.g. 10 to add scenes 10-19)",
+  )
+  parser.add_argument(
     "--dry-run", action="store_true",
     help="Print resolved config and exit",
   )
@@ -181,6 +185,11 @@ def main():
       config_path = str(default_toml)
 
   cfg = load_config(config_path, args.preset, args)
+
+  # Inject start_idx into all splits for incremental generation
+  if args.start_idx > 0:
+    for split_cfg in cfg["splits"].values():
+      split_cfg["start_idx"] = args.start_idx
 
   if not cfg["splits"]:
     logger.error("No splits configured. Check config.toml or use --preset.")

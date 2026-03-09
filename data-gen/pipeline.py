@@ -49,6 +49,7 @@ def render_split(split_name: str, split_cfg: dict, cfg: dict) -> Path:
   min_obj = split_cfg.get("min_objects", objects["min_count"])
   max_obj = split_cfg.get("max_objects", objects["max_count"])
   n_scenes = split_cfg["n_scenes"]
+  start_idx = split_cfg.get("start_idx", 0)
 
   # Decide output paths based on Windows vs native Blender
   if _is_windows_blender(blender):
@@ -98,6 +99,7 @@ def render_split(split_name: str, split_cfg: dict, cfg: dict) -> Path:
     "--width", str(rendering["width"]),
     "--height", str(rendering["height"]),
     "--render_num_samples", str(rendering["samples"]),
+    "--start_idx", str(start_idx),
   ]
 
   if cfg["blender"].get("use_gpu", False):

@@ -97,6 +97,27 @@ bash training/run_grpo.sh --model /path/to/Qwen3-VL-32B --gpus 8
 
 当前默认配置文件是 [grpo_qwen3vl32b_lora.yaml](/Users/tsyq/code/ordinary-bench/training/configs/grpo_qwen3vl32b_lora.yaml)。
 
+## 服务器最小步骤
+
+如果服务器上只有代码、还没有 `prepared_data/verl`，按默认路径直接执行:
+
+```bash
+git checkout train/verl-qwen3vl-32b
+bash training/setup_uv.sh
+source .venv/bin/activate
+bash training/prepare_data.sh --data-dir ./data-gen/output --include-sft
+bash training/run_grpo.sh --gpus 8
+```
+
+如果你已经把本地的 [prepared_data/verl](/Users/tsyq/code/ordinary-bench/prepared_data/verl) 一并同步到服务器，则可以跳过数据准备:
+
+```bash
+git checkout train/verl-qwen3vl-32b
+bash training/setup_uv.sh
+source .venv/bin/activate
+bash training/run_grpo.sh --gpus 8
+```
+
 配置重点:
 
 - `use_remove_padding: false`

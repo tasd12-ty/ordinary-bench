@@ -1,0 +1,682 @@
+{
+  "scene_id": "n05_000096",
+  "image_path": "images/single_view/n05_000096.png",
+  "objects": [
+    {
+      "id": "obj_0",
+      "desc": "large cyan rubber cylinder"
+    },
+    {
+      "id": "obj_1",
+      "desc": "large green metal cube"
+    },
+    {
+      "id": "obj_2",
+      "desc": "small blue rubber cylinder"
+    },
+    {
+      "id": "obj_3",
+      "desc": "large red metal cube"
+    },
+    {
+      "id": "obj_4",
+      "desc": "small green metal sphere"
+    }
+  ],
+  "n_objects": 5,
+  "tau": 0.1,
+  "ground_truth": {
+    "qrr": [
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      }
+    ],
+    "trr": [
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 155.233610898926
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 244.0016636082604
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 226.57833642782543
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 348.17804375909077
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 282.2045500938249
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 277.34885216704316
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 17.924059065008297
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 43.18251269040804
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 52.42530923913382
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 17.028840882521646
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 54.85492376157465
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 248.9534182370821
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 347.05556713983526
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 46.077604543252086
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 29.549495545303778
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 11.821956240909246
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 294.0265063347341
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 289.17080840795245
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 342.0759409349917
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 25.258453625399742
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 34.501250174125516
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 342.97115911747835
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 37.826082879053004
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 231.92457735456045
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 12.944432860164756
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 59.022037403416846
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 42.49392840546854
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 204.766389101074
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 88.76805270933438
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 71.34472552889942
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 316.81748730959197
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 334.74154637460026
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 9.242796548725774
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 305.14507623842536
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 322.173917120947
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 194.09849447550744
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 313.9223954567479
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 300.97796259658315
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 343.4718910020517
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 115.9983363917396
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 271.23194729066563
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 342.57667281956503
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 77.79544990617514
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 65.97349366526589
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 355.14430207321834
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 111.0465817629179
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 128.07542264543955
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 165.90150552449256
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 330.4505044546962
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 317.5060715945315
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 16.528108997948305
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 133.42166357217457
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 288.6552744711006
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 17.423327180434963
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 82.65114783295682
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 70.82919159204758
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 4.855697926781687
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 307.5746907608662
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 325.4987498258745
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 350.7572034512742
+      }
+    ]
+  }
+}

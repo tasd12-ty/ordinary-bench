@@ -1,0 +1,8366 @@
+{
+  "scene_id": "n09_000025",
+  "image_path": "images/single_view/n09_000025.png",
+  "objects": [
+    {
+      "id": "obj_0",
+      "desc": "small gray rubber cylinder"
+    },
+    {
+      "id": "obj_1",
+      "desc": "large blue rubber sphere"
+    },
+    {
+      "id": "obj_2",
+      "desc": "small green rubber cube"
+    },
+    {
+      "id": "obj_3",
+      "desc": "small yellow metal cylinder"
+    },
+    {
+      "id": "obj_4",
+      "desc": "large brown rubber cylinder"
+    },
+    {
+      "id": "obj_5",
+      "desc": "small purple metal cylinder"
+    },
+    {
+      "id": "obj_6",
+      "desc": "small blue metal cube"
+    },
+    {
+      "id": "obj_7",
+      "desc": "small cyan metal cylinder"
+    },
+    {
+      "id": "obj_8",
+      "desc": "large gray metal cube"
+    }
+  ],
+  "n_objects": 9,
+  "tau": 0.1,
+  "ground_truth": {
+    "qrr": [
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_1"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_2"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_1",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_0",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_2"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_3"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_2",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_1",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_3"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_4"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_3",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_2",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_4"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_5"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_4",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_3",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_5"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_6"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_5",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_4",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": ">"
+      },
+      {
+        "pair1": [
+          "obj_5",
+          "obj_6"
+        ],
+        "pair2": [
+          "obj_7",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "~="
+      },
+      {
+        "pair1": [
+          "obj_5",
+          "obj_7"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_8"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      },
+      {
+        "pair1": [
+          "obj_5",
+          "obj_8"
+        ],
+        "pair2": [
+          "obj_6",
+          "obj_7"
+        ],
+        "metric": "dist3D",
+        "comparator": "<"
+      }
+    ],
+    "trr": [
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 243.90606128766842
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 138.28646717562822
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 222.1496936318636
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_5",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 272.8137445303652
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_6",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 181.36380642049343
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_7",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 85.01451618504487
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_1",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 320.4641623300905
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 43.710404006778965
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 90.40053327969342
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 187.1460228590238
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_5",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 277.3213022680376
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_6",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 122.73900731784758
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 53.316315617757176
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_2",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 330.69640286240895
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 336.4788938869636
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 308.7886172719182
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 276.0822880952473
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 311.2665246583484
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_6",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 267.390040991747
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_7",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 8.668852908865292
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_3",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 337.6694089487178
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 19.397377561612892
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 4.5893640696624916
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 55.137545313661235
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 326.08282307029737
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_6",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 61.67099101844216
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_7",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 30.340405006862536
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_4",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 343.7349810619252
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_5",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 47.561809737093604
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_5",
+        "ref2": "obj_2",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 72.26502475565542
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_5",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 67.82216315374137
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_5",
+        "ref2": "obj_4",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 123.58320434727649
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_5",
+        "ref2": "obj_6",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 86.32842857170135
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_5",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 45.20174637358302
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_5",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 342.67433745832636
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_6",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 0.7622890178198043
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_6",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 322.3331471960634
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_6",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 68.59609687773798
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_6",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 263.82178968601926
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_6",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 310.9788459622993
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_6",
+        "ref2": "obj_7",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 27.2084830646953
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_6",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 338.41012531678575
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_7",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 288.3879929220249
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_7",
+        "ref2": "obj_2",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 276.8854496356267
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_7",
+        "ref2": "obj_3",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 193.84990293451
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_7",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 256.46619781409333
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_7",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 293.8271579038347
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_7",
+        "ref2": "obj_6",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 231.183477204349
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_7",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 327.5768259665935
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_8",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 74.8630230893063
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_8",
+        "ref2": "obj_2",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 105.29092090251416
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_8",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 73.8758429965982
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_8",
+        "ref2": "obj_4",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 120.8861578913917
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_8",
+        "ref2": "obj_5",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 142.3251330108137
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_8",
+        "ref2": "obj_6",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 93.41050347867517
+      },
+      {
+        "target": "obj_0",
+        "ref1": "obj_8",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 58.60220998882921
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 20.19565728088942
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 341.8075732886646
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 22.752316070250725
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 45.25193479327161
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_6",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 0.6015174026736044
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 336.6265232630199
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_0",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 65.60113924078424
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 316.28959599322104
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 46.690129272914454
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 143.4356188522448
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_5",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 233.6108982612586
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_6",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 79.0286033110686
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_7",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 9.605911610978207
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_2",
+        "ref2": "obj_8",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 286.98599885563
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 23.52110611303641
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 332.3097233849546
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 299.60339420828376
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 334.7876307713848
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 290.91114710478337
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_7",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 32.1899590219017
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_3",
+        "ref2": "obj_8",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 1.1905150617542126
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 340.60262243838713
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 345.1919865080496
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 35.740167752048336
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 306.6854455086845
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 42.27361345682927
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_7",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 10.943027445249644
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_4",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 324.3376035003123
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_5",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 312.4381902629064
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_5",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 24.703215018561817
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_5",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 20.26035341664776
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_5",
+        "ref2": "obj_4",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 76.0213946101829
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_5",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 38.76661883460775
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_5",
+        "ref2": "obj_7",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 357.63993663648944
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_5",
+        "ref2": "obj_8",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 295.1125277212327
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_6",
+        "ref2": "obj_0",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 359.2377109821802
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_6",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 321.57085817824355
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_6",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 67.83380785991818
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_6",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 263.05950066819946
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_6",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 310.2165569444796
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_6",
+        "ref2": "obj_7",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 26.446194046875497
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_6",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 337.64783629896596
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_7",
+        "ref2": "obj_0",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 71.61200707797508
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_7",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 348.49745671360176
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_7",
+        "ref2": "obj_3",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 265.4619100124851
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_7",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 328.0782048920684
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_7",
+        "ref2": "obj_5",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 5.4391649818097445
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_7",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 302.795484282324
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_7",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 39.188833044568575
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_8",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 285.1369769106937
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_8",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 30.427897813207867
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_8",
+        "ref2": "obj_3",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 359.0128199072919
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_8",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 46.02313480208541
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_8",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 67.4621099215074
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_8",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 18.547480389368875
+      },
+      {
+        "target": "obj_1",
+        "ref1": "obj_8",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 343.7391868995229
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 339.8043427191106
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 321.6119160077752
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 2.556658789361305
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 25.056277512382188
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 340.4058601217842
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 316.4308659821305
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_0",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 45.40548195989482
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 116.09393871233158
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 254.3804058879598
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 338.2436323441952
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 28.907683242696812
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 297.45774513282504
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_7",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 201.10845489737645
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_1",
+        "ref2": "obj_8",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 76.55810104242212
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 51.21138272808179
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 27.690276615045363
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 327.2936708233291
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_5",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 2.477907386430134
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 318.60142371982874
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 59.88023563694708
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_3",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 28.88079167679958
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 355.4106359303375
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 14.8080134919504
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 50.54818124399874
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 321.49345900063486
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_6",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 57.081626948779665
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_7",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 25.751040937200045
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_4",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 339.1456169922627
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_5",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 287.7349752443446
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_5",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 335.2967849814382
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_5",
+        "ref2": "obj_3",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 355.55713839808595
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_5",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 51.318179591621075
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_5",
+        "ref2": "obj_6",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 14.063403816045929
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_5",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 332.9367216179276
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_5",
+        "ref2": "obj_8",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 270.40931270267095
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_6",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 37.66685280393659
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_6",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 38.429141821756446
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_6",
+        "ref2": "obj_3",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 106.2629496816746
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_6",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 301.48864248995585
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_6",
+        "ref2": "obj_5",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 348.64569876623597
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_6",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 64.87533586863191
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_6",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 16.0769781207224
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_7",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 83.11455036437332
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_7",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 11.502543286398252
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_7",
+        "ref2": "obj_3",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 276.9644532988833
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_7",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 339.58074817846665
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_7",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 16.941708268207996
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_7",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 314.2980275687223
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_7",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 50.691376330966825
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_8",
+        "ref2": "obj_0",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 254.70907909748584
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_8",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 329.5721021867921
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_8",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 328.58492209408405
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_8",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 15.595236988877542
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_8",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 37.03421210829954
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_8",
+        "ref2": "obj_6",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 348.119582576161
+      },
+      {
+        "target": "obj_2",
+        "ref1": "obj_8",
+        "ref2": "obj_7",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 313.31128908631507
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 18.192426711335376
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 38.38808399222479
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 40.9447427815861
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 63.444361504606974
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 18.79394411400898
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_7",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 354.8189499743553
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_0",
+        "ref2": "obj_8",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 83.79356595211961
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 221.71353282437178
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 105.61959411204019
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 83.8632264562354
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_5",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 134.527277354737
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 43.07733924486522
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_7",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 306.7280490094167
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_1",
+        "ref2": "obj_8",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 182.17769515446233
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 269.59946672030657
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 313.3098707270855
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 96.74548957933037
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_5",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 186.92076898834418
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 32.33847403815414
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 322.91578233806376
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_2",
+        "ref2": "obj_8",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 240.29586958271557
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 304.86245468633876
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 324.25983224795164
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 309.4518187560013
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_5",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 270.94527775663613
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_6",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 6.533445704780928
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 335.2028596932013
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_4",
+        "ref2": "obj_8",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 288.597435748264
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_5",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 292.17783684625863
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_5",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 339.7396465833522
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_5",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 4.442861601914057
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_5",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 55.761041193535135
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_5",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 18.506265417959987
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_5",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 337.37958321984166
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_5",
+        "ref2": "obj_8",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 274.852174304585
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_6",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 291.403903122262
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_6",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 292.1661921400818
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_6",
+        "ref2": "obj_2",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 253.7370503183254
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_6",
+        "ref2": "obj_4",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 195.22569280828125
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_6",
+        "ref2": "obj_5",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 242.38274908456137
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_6",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 318.61238618695734
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_6",
+        "ref2": "obj_8",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 269.8140284390478
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_7",
+        "ref2": "obj_0",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 166.15009706549
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_7",
+        "ref2": "obj_1",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 94.53808998751495
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_7",
+        "ref2": "obj_2",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 83.03554670111669
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_7",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 62.616294879583336
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_7",
+        "ref2": "obj_5",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 99.97725496932469
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_7",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 37.33357426983899
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_7",
+        "ref2": "obj_8",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 133.72692303208353
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_8",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 286.1241570034018
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_8",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 0.9871800927081044
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_8",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 31.415077905915968
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_8",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 47.01031489479351
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_8",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 68.4492900142155
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_8",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 19.534660482076976
+      },
+      {
+        "target": "obj_3",
+        "ref1": "obj_8",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 344.726366992231
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 337.24768392974926
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 357.4433412106387
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 319.0552572184139
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 22.49961872302088
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 337.84920133242287
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_7",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 313.8742071927692
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_0",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 42.848823170533514
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 137.8503063681364
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 21.756367655804798
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 276.1367735437646
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 50.66405089850161
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 319.2141127886298
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_7",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 222.86482255318128
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_1",
+        "ref2": "obj_8",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 98.31446869822693
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 172.8539771409762
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 216.5643811477552
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 263.25451042066965
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_5",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 90.17527940901381
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 295.59298445882376
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_7",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 226.17029275873338
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_2",
+        "ref2": "obj_8",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 143.5503800033852
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 83.91771190475271
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 60.39660579171626
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 32.7063291766709
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 35.18423656310103
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_6",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 351.30775289649966
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_7",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 92.586564813618
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_3",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 61.58712085347047
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_5",
+        "ref2": "obj_0",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 236.41679565272352
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_5",
+        "ref2": "obj_1",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 283.9786053898171
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_5",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 308.68182040837894
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_5",
+        "ref2": "obj_3",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 304.2389588064649
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_5",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 322.7452242244249
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_5",
+        "ref2": "obj_7",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 281.6185420263065
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_5",
+        "ref2": "obj_8",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 219.09113311104986
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_6",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 96.17821031398074
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_6",
+        "ref2": "obj_1",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 96.94049933180054
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_6",
+        "ref2": "obj_2",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 58.51135751004413
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_6",
+        "ref2": "obj_3",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 164.77430719171875
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_6",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 47.15705627628008
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_6",
+        "ref2": "obj_7",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 123.38669337867606
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_6",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 74.58833563076655
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_7",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 103.53380218590667
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_7",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 31.92179510793161
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_7",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 20.41925182153336
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_7",
+        "ref2": "obj_3",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 297.38370512041666
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_7",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 37.360960089741354
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_7",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 334.71727939025567
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_7",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 71.11062815250018
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_8",
+        "ref2": "obj_0",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 239.1138421086083
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_8",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 313.9768651979146
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_8",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 344.40476301112244
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_8",
+        "ref2": "obj_3",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 312.9896851052065
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_8",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 21.438975119422
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_8",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 332.52434558728345
+      },
+      {
+        "target": "obj_4",
+        "ref1": "obj_8",
+        "ref2": "obj_7",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 297.7160520974375
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 314.74806520672837
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 334.94372248761783
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 296.55563849539305
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 337.5003812769791
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_0",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 315.349582609402
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_0",
+        "ref2": "obj_7",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 291.37458846974835
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_0",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 20.349204447512633
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 87.18625546963477
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 331.0923167573032
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 225.472722645263
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 309.3359491014984
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_1",
+        "ref2": "obj_6",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 268.5500618901282
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_1",
+        "ref2": "obj_7",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 172.20077165467964
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_1",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 47.65041779972532
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 82.67869773196242
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 126.3891017387414
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 173.07923101165582
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 269.8247205909862
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_2",
+        "ref2": "obj_6",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 205.41770504981
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_2",
+        "ref2": "obj_7",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 135.99501334971958
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_2",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 53.37510059437136
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 48.733475341651626
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 25.21236922861523
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 357.52209261356984
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 324.815763436899
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_3",
+        "ref2": "obj_6",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 316.12351633339864
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_3",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 57.402328250516916
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_3",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 26.402884290369443
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 33.91717692970263
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 53.31455449131552
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 38.50654099936512
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 89.05472224336386
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_4",
+        "ref2": "obj_6",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 95.58816794814479
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_4",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 64.25758193656516
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_4",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 17.652157991627845
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_6",
+        "ref2": "obj_0",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 49.02115403770068
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_6",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 49.78344305552042
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_6",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 11.354301233764042
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_6",
+        "ref2": "obj_3",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 117.61725091543863
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_6",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 312.84294372371994
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_6",
+        "ref2": "obj_7",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 76.22963710239594
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_6",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 27.431279354486435
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_7",
+        "ref2": "obj_0",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 66.17284209616531
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_7",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 354.56083501819023
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_7",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 343.058291731792
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_7",
+        "ref2": "obj_3",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 260.0227450306753
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_7",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 322.63903991025865
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_7",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 297.3563193005143
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_7",
+        "ref2": "obj_8",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 33.74966806275883
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_8",
+        "ref2": "obj_0",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 217.6748669891863
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_8",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 292.5378900784926
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_8",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 322.9657878917005
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_8",
+        "ref2": "obj_3",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 291.55070998578447
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_8",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 338.561024880578
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_8",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 311.0853704678615
+      },
+      {
+        "target": "obj_5",
+        "ref1": "obj_8",
+        "ref2": "obj_7",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 276.27707697801554
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 359.3984825973264
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 19.594139878215817
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 341.206055885991
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 22.15079866757712
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_0",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 44.650417390598
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_0",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 336.0250058603463
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_0",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 64.99962183811064
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 178.63619357950657
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 62.54225486717499
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 316.92266075513476
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 40.78588721137018
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_1",
+        "ref2": "obj_5",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 91.4499381098718
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_1",
+        "ref2": "obj_7",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 263.65070976455144
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_1",
+        "ref2": "obj_8",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 139.1003559095971
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 237.26099268215242
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 280.9713966889314
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 327.6615259618459
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 64.40701554117622
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_2",
+        "ref2": "obj_5",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 154.58229495019
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_2",
+        "ref2": "obj_7",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 290.57730829990965
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_2",
+        "ref2": "obj_8",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 207.9573955445614
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 92.60995900825299
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 69.0888528952166
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 41.398576280171234
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 8.692247103500337
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_3",
+        "ref2": "obj_5",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 43.87648366660137
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_3",
+        "ref2": "obj_7",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 101.27881191711828
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_3",
+        "ref2": "obj_8",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 70.27936795697082
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 298.3290089815578
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 317.72638654317075
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 302.9183730512203
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 353.46655429521905
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_4",
+        "ref2": "obj_5",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 264.4118320518552
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_4",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 328.6694139884204
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_4",
+        "ref2": "obj_8",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 282.06399004348305
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_5",
+        "ref2": "obj_0",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 273.67157142829865
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_5",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 321.23338116539225
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_5",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 345.93659618395407
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_5",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 341.49373458204
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_5",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 37.25477577557515
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_5",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 318.8733178018817
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_5",
+        "ref2": "obj_8",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 256.345908886625
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_7",
+        "ref2": "obj_0",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 128.816522795651
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_7",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 57.20451571767595
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_7",
+        "ref2": "obj_2",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 45.701972431277696
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_7",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 322.666425730161
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_7",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 25.282720609744338
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_7",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 62.64368069948569
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_7",
+        "ref2": "obj_8",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 96.39334876224453
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_8",
+        "ref2": "obj_0",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 266.5894965213248
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_8",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 341.4525196106311
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_8",
+        "ref2": "obj_2",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 11.880417423838995
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_8",
+        "ref2": "obj_3",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 340.46533951792304
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_8",
+        "ref2": "obj_4",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 27.475654412716533
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_8",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 48.914629532138534
+      },
+      {
+        "target": "obj_6",
+        "ref1": "obj_8",
+        "ref2": "obj_7",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 325.19170651015406
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 23.373476736980084
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 43.56913401786951
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 5.181050025644709
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 46.12579280723081
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_0",
+        "ref2": "obj_5",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 68.62541153025168
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_0",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 23.97499413965369
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_0",
+        "ref2": "obj_8",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 88.97461597776432
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 274.98548381495516
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 158.89154510262355
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 53.27195099058334
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 137.13517744681872
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_1",
+        "ref2": "obj_5",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 187.79922834532036
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_1",
+        "ref2": "obj_6",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 96.34929023544855
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_1",
+        "ref2": "obj_8",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 235.44964614504565
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 306.6836843822428
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 350.3940883890218
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 37.08421766193625
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 133.82970724126662
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_2",
+        "ref2": "obj_5",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 224.00498665028042
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_2",
+        "ref2": "obj_6",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 69.42269170009038
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_2",
+        "ref2": "obj_8",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 277.3800872446518
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 351.3311470911347
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 327.8100409780983
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 300.1197643630529
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 267.413435186382
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_3",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 302.5976717494831
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_3",
+        "ref2": "obj_6",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 258.7211880828817
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_3",
+        "ref2": "obj_8",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 329.0005560398525
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 329.6595949931375
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 349.05697255475036
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 334.24895906279994
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 24.797140306798696
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_4",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 295.74241806343485
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_4",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 31.330586011579623
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_4",
+        "ref2": "obj_8",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 313.39457605506266
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_5",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 314.79825362641697
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_5",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 2.3600633635105885
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_5",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 27.063278382072408
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_5",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 22.62041678015835
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_5",
+        "ref2": "obj_4",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 78.38145797369347
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_5",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 41.12668219811834
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_5",
+        "ref2": "obj_8",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 297.4725910847433
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_6",
+        "ref2": "obj_0",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 332.7915169353047
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_6",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 333.5538059531245
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_6",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 295.1246641313681
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_6",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 41.387613813042684
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_6",
+        "ref2": "obj_4",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 236.61330662132394
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_6",
+        "ref2": "obj_5",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 283.77036289760406
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_6",
+        "ref2": "obj_8",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 311.2016422520905
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_8",
+        "ref2": "obj_0",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 301.3977900111708
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_8",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 16.26081310047708
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_8",
+        "ref2": "obj_2",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 46.68871091368495
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_8",
+        "ref2": "obj_3",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 15.273633007768975
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_8",
+        "ref2": "obj_4",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 62.283947902562495
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_8",
+        "ref2": "obj_5",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 83.72292302198449
+      },
+      {
+        "target": "obj_7",
+        "ref1": "obj_8",
+        "ref2": "obj_6",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 34.80829348984595
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_0",
+        "ref2": "obj_1",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 294.3988607592158
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_0",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 314.5945180401052
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_0",
+        "ref2": "obj_3",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 276.2064340478804
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_0",
+        "ref2": "obj_4",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 317.15117682946646
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_0",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 339.65079555248735
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_0",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 295.00037816188933
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_0",
+        "ref2": "obj_7",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 271.0253840222357
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_1",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 39.53583766990948
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_1",
+        "ref2": "obj_2",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 283.4418989575779
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_1",
+        "ref2": "obj_3",
+        "hour": 6,
+        "quadrant": 3,
+        "angle_deg": 177.82230484553767
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_1",
+        "ref2": "obj_4",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 261.68553130177304
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_1",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 312.34958220027465
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_1",
+        "ref2": "obj_6",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 220.8996440904029
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_1",
+        "ref2": "obj_7",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 124.55035385495435
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_2",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 29.303597137591034
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_2",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 73.01400114437
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_2",
+        "ref2": "obj_3",
+        "hour": 4,
+        "quadrant": 2,
+        "angle_deg": 119.70413041728445
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_2",
+        "ref2": "obj_4",
+        "hour": 7,
+        "quadrant": 3,
+        "angle_deg": 216.4496199966148
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_2",
+        "ref2": "obj_5",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 306.62489940562864
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_2",
+        "ref2": "obj_6",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 152.0426044554386
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_2",
+        "ref2": "obj_7",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 82.61991275534821
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_3",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 22.330591051282227
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_3",
+        "ref2": "obj_1",
+        "hour": 12,
+        "quadrant": 1,
+        "angle_deg": 358.80948493824576
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_3",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 331.11920832320044
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_3",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 298.4128791465295
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_3",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 333.59711570963054
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_3",
+        "ref2": "obj_6",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 289.7206320430292
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_3",
+        "ref2": "obj_7",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 30.999443960147516
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_4",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 16.265018938074782
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_4",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 35.662396499687674
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_4",
+        "ref2": "obj_2",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 20.854383007737276
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_4",
+        "ref2": "obj_3",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 71.40256425173601
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_4",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 342.34784200837214
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_4",
+        "ref2": "obj_6",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 77.93600995651694
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_4",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 46.60542394493732
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_5",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 17.325662541673665
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_5",
+        "ref2": "obj_1",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 64.88747227876728
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_5",
+        "ref2": "obj_2",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 89.59068729732908
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_5",
+        "ref2": "obj_3",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 85.14782569541504
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_5",
+        "ref2": "obj_4",
+        "hour": 5,
+        "quadrant": 2,
+        "angle_deg": 140.90886688895014
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_5",
+        "ref2": "obj_6",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 103.65409111337502
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_5",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 62.52740891525668
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_6",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 21.58987468321423
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_6",
+        "ref2": "obj_1",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 22.352163701034033
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_6",
+        "ref2": "obj_2",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 343.9230218792776
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_6",
+        "ref2": "obj_3",
+        "hour": 3,
+        "quadrant": 2,
+        "angle_deg": 90.18597156095221
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_6",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 285.41166436923345
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_6",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 332.56872064551357
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_6",
+        "ref2": "obj_7",
+        "hour": 2,
+        "quadrant": 1,
+        "angle_deg": 48.79835774790953
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_7",
+        "ref2": "obj_0",
+        "hour": 1,
+        "quadrant": 1,
+        "angle_deg": 32.4231740334065
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_7",
+        "ref2": "obj_1",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 320.8111669554314
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_7",
+        "ref2": "obj_2",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 309.3086236690332
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_7",
+        "ref2": "obj_3",
+        "hour": 8,
+        "quadrant": 3,
+        "angle_deg": 226.27307696791647
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_7",
+        "ref2": "obj_4",
+        "hour": 10,
+        "quadrant": 4,
+        "angle_deg": 288.88937184749983
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_7",
+        "ref2": "obj_5",
+        "hour": 11,
+        "quadrant": 4,
+        "angle_deg": 326.2503319372412
+      },
+      {
+        "target": "obj_8",
+        "ref1": "obj_7",
+        "ref2": "obj_6",
+        "hour": 9,
+        "quadrant": 4,
+        "angle_deg": 263.6066512377555
+      }
+    ]
+  }
+}

@@ -28,7 +28,10 @@ def score_trr_hour(predicted: int, gt_hour: int) -> bool:
 def score_trr_quadrant(predicted: int, gt_quadrant: int) -> bool:
     """TRR 象限匹配：预测的 hour 是否落在 GT 所在象限。"""
     try:
-        return hour_to_quadrant(int(predicted)) == gt_quadrant
+        predicted = int(predicted)
+        if not 1 <= predicted <= 12:
+            return False
+        return hour_to_quadrant(predicted) == gt_quadrant
     except (ValueError, TypeError):
         return False
 
@@ -36,7 +39,10 @@ def score_trr_quadrant(predicted: int, gt_quadrant: int) -> bool:
 def score_trr_adjacent(predicted: int, gt_hour: int) -> bool:
     """TRR 相邻匹配：预测 hour 与 GT hour 差 ≤ 1（12↔1 循环）。"""
     try:
-        diff = abs(int(predicted) - gt_hour)
+        predicted = int(predicted)
+        if not 1 <= predicted <= 12:
+            return False
+        diff = abs(predicted - gt_hour)
         return diff <= 1 or diff >= 11
     except (ValueError, TypeError):
         return False
@@ -150,6 +156,7 @@ def aggregate_batch_results(scene_results: List[dict]) -> dict:
             "qrr_accuracy": _acc(counts["qrr_correct"], counts["qrr_total"]),
             "trr_hour_accuracy": _acc(counts["trr_hour_correct"], counts["trr_total"]),
             "trr_quadrant_accuracy": _acc(counts["trr_quadrant_correct"], counts["trr_total"]),
+            "trr_adjacent_accuracy": _acc(counts["trr_adjacent_correct"], counts["trr_total"]),
             **counts,
         }
 

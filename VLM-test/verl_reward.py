@@ -15,17 +15,36 @@ import re
 from typing import Union
 
 
+def _normalize_qrr_answer(value: str) -> Union[str, None]:
+    if value is None:
+        return None
+    normalized = str(value).strip().lower()
+    mapping = {
+        "<": "<",
+        "lt": "<",
+        ">": ">",
+        "gt": ">",
+        "~=": "~=",
+        "=": "~=",
+        "≈": "~=",
+        "approx": "~=",
+        "eq": "~=",
+    }
+    return mapping.get(normalized)
+
+
 def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
     """从模型回复中解析答案。"""
     text = response.strip()
 
     if question_type == "qrr":
-        for pattern in [r'"answer"\s*:\s*"([<>~=]+)"', r'\b([<>]|~=)\b']:
+        for pattern in [r'"answer"\s*:\s*"([^"]+)"', r'\b([<>]|~=|=|≈|lt|gt|eq|approx)\b']:
             m = re.search(pattern, text)
             if m:
-                return m.group(1)
-        if text in ("<", ">", "~="):
-            return text
+                return _normalize_qrr_answer(m.group(1))
+        normalized = _normalize_qrr_answer(text)
+        if normalized is not None:
+            return normalized
         return None
 
     elif question_type == "trr":
@@ -42,6 +61,8 @@ def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
 
 def _hour_to_quadrant(hour: int) -> int:
     """时钟小时转象限: Q1=12/1/2, Q2=3/4/5, Q3=6/7/8, Q4=9/10/11。"""
+    if not 1 <= hour <= 12:
+        raise ValueError(f"invalid hour: {hour}")
     return ((hour % 12) // 3) + 1
 
 
@@ -74,7 +95,13 @@ def _score_qrr_soft(predicted: str, gt_answer: str, ratio: float = None) -> floa
 
     无 ratio 时退化为硬评分。
     """
-    if str(predicted) == str(gt_answer):
+    predicted = _normalize_qrr_answer(predicted)
+    gt_answer = _normalize_qrr_answer(gt_answer)
+
+    if predicted is None or gt_answer is None:
+        return 0.0
+
+    if predicted == gt_answer:
         return 1.0
 
     if ratio is None:
@@ -97,6 +124,10 @@ def _score_qrr_soft(predicted: str, gt_answer: str, ratio: float = None) -> floa
 
 def _score_trr(pred_hour: int, gt_hour: int) -> float:
     """TRR 多级评分。"""
+    if not 1 <= pred_hour <= 12:
+        return 0.0
+    if not 1 <= gt_hour <= 12:
+        return 0.0
     if pred_hour == gt_hour:
         return 1.0
     if _hour_to_quadrant(pred_hour) == _hour_to_quadrant(gt_hour):
@@ -191,7 +222,7 @@ def _score_batch(response: str, gt_list: list) -> float:
 
         if q_type == "qrr":
             ratio = gt_item.get("ratio")
-            total_score += _score_qrr_soft(str(pred), str(gt_answer), ratio)
+            total_score += _score_qrr_soft(pred, gt_answer, ratio)
         elif q_type == "trr":
             try:
                 total_score += _score_trr(int(pred), int(gt_answer))

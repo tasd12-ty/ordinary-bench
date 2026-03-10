@@ -1,32 +1,25 @@
 #!/usr/bin/env python3
 """
-将 ORDINARY-BENCH 数据转换为 verl 框架所需的 parquet 格式。
+将 ORDINARY-BENCH 数据转换为 verl 可直接加载的 parquet 格式。
 
-支持两种模式：
-  - rl:  每个问题一行，适用于 GRPO/PPO 训练
-  - sft: 每个 batch 一行，适用于 SFT 训练（与评测格式一致）
+当前推荐路径:
+  - rl:  每个问题一行，适用于 Qwen3-VL-32B + GRPO/PPO
+  - sft: 每个 batch 一行，保留为实验性导出
 
-用法：
-    # RL 数据（per-question）
-    python prepare_verl_data.py --mode rl --data-dir ../data-gen/output --output-dir ./verl_data
-
-    # SFT 数据（per-batch）
-    python prepare_verl_data.py --mode sft --data-dir ../data-gen/output --output-dir ./verl_data
-
-    # 使用多视角图片
-    python prepare_verl_data.py --mode rl --multi-view --data-dir ../data-gen/output
-
-输出：
-    verl_data/train.parquet  — 训练集
-    verl_data/test.parquet   — 测试集
+关键约束:
+  - RL prompt 输出为结构化 chat messages，而不是 JSON 字符串
+  - images 输出为 [{"path": "..."}] 列表
+  - 用户消息前自动补足 <image> 占位符，和图片数量一一对应
 """
 
 import argparse
 import json
 import logging
 import math
-import os
 from pathlib import Path
+
+import pyarrow as pa
+import pyarrow.parquet as pq
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -121,6 +114,42 @@ def format_batch_questions(questions: list) -> str:
     return "\n".join(lines)
 
 
+def build_image_entries(scene_id: str, data_dir: Path, multi_view: bool, n_views: int = 4) -> list:
+    """返回 verl 期望的图片字典列表。"""
+    if multi_view:
+        paths = [
+            data_dir / "images" / "multi_view" / scene_id / f"view_{i}.png"
+            for i in range(n_views)
+        ]
+    else:
+        paths = [data_dir / "images" / "single_view" / f"{scene_id}.png"]
+
+    images = []
+    for path in paths:
+        if not path.exists():
+            logger.warning("图片不存在: %s", path)
+        images.append({"path": str(path.resolve())})
+    return images
+
+
+def build_user_content(body: str, n_images: int) -> str:
+    """在用户消息前补齐 verl 多模态 loader 所需的 <image> 占位符。"""
+    if n_images <= 0:
+        return body
+    prefix = "\n".join("<image>" for _ in range(n_images))
+    return f"{prefix}\n{body}"
+
+
+def build_sft_prompt(system: str, user_text: str, n_images: int) -> str:
+    """SFT 保留为字符串 prompt，便于后续按需要接入自定义 chat template。"""
+    content = build_user_content(user_text, n_images)
+    return (
+        f"System:\n{system}\n\n"
+        f"User:\n{content}\n\n"
+        "Assistant:\n"
+    )
+
+
 def get_gt_answer(q: dict):
     """提取问题的 ground truth 答案。"""
     if q["type"] == "qrr":
@@ -176,17 +205,6 @@ def _compute_qrr_ratio(q: dict, scene_objects: dict) -> float:
     return d1 / d2
 
 
-def get_image_paths(scene_id: str, data_dir: Path, multi_view: bool, n_views: int = 4) -> list:
-    """返回场景的图片路径列表。"""
-    if multi_view:
-        return [
-            str(data_dir / "images" / "multi_view" / scene_id / f"view_{i}.png")
-            for i in range(n_views)
-        ]
-    else:
-        return [str(data_dir / "images" / "single_view" / f"{scene_id}.png")]
-
-
 def build_rl_samples(
     question_file: Path, data_dir: Path, multi_view: bool, n_views: int,
 ) -> list:
@@ -196,7 +214,7 @@ def build_rl_samples(
 
     scene_id = qdata["scene_id"]
     objects = qdata["objects"]
-    images = get_image_paths(scene_id, data_dir, multi_view, n_views)
+    images = build_image_entries(scene_id, data_dir, multi_view, n_views)
     obj_text = format_objects(objects)
     split = scene_id.rsplit("_", 1)[0]
 
@@ -211,7 +229,8 @@ def build_rl_samples(
     samples = []
     for batch in qdata["batches"]:
         for q in batch["questions"]:
-            user_text = f"{obj_text}\n\nQuestion:\n{format_single_question(q)}"
+            question_text = f"{obj_text}\n\nQuestion:\n{format_single_question(q)}"
+            user_text = build_user_content(question_text, len(images))
             gt = get_gt_answer(q)
 
             prompt = [
@@ -261,7 +280,7 @@ def build_sft_samples(
 
     scene_id = qdata["scene_id"]
     objects = qdata["objects"]
-    images = get_image_paths(scene_id, data_dir, multi_view, n_views)
+    images = build_image_entries(scene_id, data_dir, multi_view, n_views)
     obj_text = format_objects(objects)
     split = scene_id.rsplit("_", 1)[0]
 
@@ -279,10 +298,7 @@ def build_sft_samples(
             answers.append({"qid": q["qid"], "answer": get_gt_answer(q)})
         response = json.dumps(answers)
 
-        prompt = [
-            {"role": "system", "content": SYSTEM_PROMPT_BATCH},
-            {"role": "user", "content": user_text},
-        ]
+        prompt = build_sft_prompt(SYSTEM_PROMPT_BATCH, user_text, len(images))
 
         # 构造 ground truth，QRR 加入距离比值
         gt_list = []
@@ -384,42 +400,44 @@ def main():
     logger.info(f"训练集样本: {len(train_samples)}")
     logger.info(f"测试集样本: {len(test_samples)}")
 
-    # 转换为 parquet
-    try:
-        import pandas as pd
-    except ImportError:
-        logger.error("需要 pandas: pip install pandas pyarrow")
-        return
+    def validate_samples(samples: list, mode: str) -> None:
+        for idx, sample in enumerate(samples):
+            if mode == "rl" and not isinstance(sample["prompt"], list):
+                raise ValueError(f"RL prompt 必须是 list[dict]，第 {idx} 条不是")
+            if mode == "sft" and not isinstance(sample["prompt"], str):
+                raise ValueError(f"SFT prompt 必须是 string，第 {idx} 条不是")
 
-    # prompt 和 reward_model 等字段序列化为 JSON 字符串存储
-    def to_parquet_rows(samples: list) -> list:
-        rows = []
-        for s in samples:
-            row = {
-                "data_source": s["data_source"],
-                "prompt": json.dumps(s["prompt"], ensure_ascii=False),
-                "ability": s["ability"],
-                "reward_model": json.dumps(s["reward_model"]),
-                "extra_info": json.dumps(s["extra_info"]),
-                "images": json.dumps(s["images"]),
-            }
-            if "response" in s:
-                row["response"] = s["response"]
-            rows.append(row)
-        return rows
+            image_count = len(sample.get("images", []))
+            if image_count == 0:
+                continue
+
+            if mode == "rl":
+                user_messages = [m for m in sample["prompt"] if m["role"] == "user"]
+                if not user_messages:
+                    raise ValueError(f"第 {idx} 条缺少 user message")
+                image_tokens = user_messages[0]["content"].count("<image>")
+            else:
+                image_tokens = sample["prompt"].count("<image>")
+
+            if image_tokens != image_count:
+                raise ValueError(
+                    f"第 {idx} 条图片占位符数量不匹配: placeholders={image_tokens}, images={image_count}"
+                )
+
+    def write_parquet(samples: list, path: Path, mode: str) -> None:
+        validate_samples(samples, mode)
+        table = pa.Table.from_pylist(samples)
+        pq.write_table(table, path)
+        logger.info("写入: %s (%d 行)", path, table.num_rows)
 
     train_path = output_dir / "train.parquet"
     test_path = output_dir / "test.parquet"
 
     if train_samples:
-        df_train = pd.DataFrame(to_parquet_rows(train_samples))
-        df_train.to_parquet(train_path, index=False)
-        logger.info(f"训练集: {train_path} ({len(df_train)} 行)")
+        write_parquet(train_samples, train_path, args.mode)
 
     if test_samples:
-        df_test = pd.DataFrame(to_parquet_rows(test_samples))
-        df_test.to_parquet(test_path, index=False)
-        logger.info(f"测试集: {test_path} ({len(df_test)} 行)")
+        write_parquet(test_samples, test_path, args.mode)
 
     # 统计信息
     stats = {

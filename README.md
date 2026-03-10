@@ -228,6 +228,16 @@ VLM_MODEL="qwen/qwen-2.5-vl-72b-instruct" python run_batch.py
 VLM_BASE_URL="http://localhost:8000/v1" VLM_MODEL="local-model" python run_batch.py
 ```
 
+## Qwen3-VL-32B Training
+
+`Qwen/Qwen3-VL-32B` 的训练入口已整理到 [training/README_qwen3vl32b.md](/Users/tsyq/code/ordinary-bench/training/README_qwen3vl32b.md)。
+
+当前仓库里的推荐路径是:
+
+1. `bash training/setup_uv.sh`
+2. `bash training/prepare_data.sh --data-dir ./data-gen/output`
+3. `bash training/run_grpo.sh --gpus 8`
+
 ## License
 
 MIT

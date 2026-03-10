@@ -28,7 +28,7 @@
 当前默认值:
 
 - Python `3.11`
-- verl `d62da49` (`v0.6.1`)
+- verl `80eb57ea` (`v0.7.0`)
 - torch `2.7.1`
 - torchvision `0.22.1`
 - vllm `0.11.0`

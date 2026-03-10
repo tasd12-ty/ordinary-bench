@@ -4,9 +4,9 @@
 
 ## 为什么用 ms-swift 而不是 verl？
 
-- verl 当前版本（`d62da49`）**不支持 Qwen3.5** 架构
+- verl 当前版本**不支持 Qwen3.5** 架构
 - ms-swift v4.0+ 已原生支持 Qwen3.5 Dense/MoE 模型的 SFT 和 GRPO
-- Qwen3.5-27B 是原生多模态模型（早期融合），需要 `transformers>=5.3.0`
+- Qwen3.5-27B 是原生多模态模型（早期融合），需要 `transformers>=5.2.0`
 
 ## 快速开始
 

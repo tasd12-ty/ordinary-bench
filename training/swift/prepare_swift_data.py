@@ -92,7 +92,11 @@ def _compute_qrr_ratio(q: dict, scene_objects: dict) -> float:
     return d1 / d2
 
 
+_missing_image_count = 0
+
+
 def get_image_paths(scene_id: str, data_dir: Path, multi_view: bool, n_views: int) -> list:
+    global _missing_image_count
     if multi_view:
         paths = [
             data_dir / "images" / "multi_view" / scene_id / f"view_{i}.png"
@@ -104,6 +108,7 @@ def get_image_paths(scene_id: str, data_dir: Path, multi_view: bool, n_views: in
     for p in paths:
         if not p.exists():
             logger.warning("图片不存在: %s", p)
+            _missing_image_count += 1
         result.append(str(p.resolve()))
     return result
 
@@ -199,6 +204,8 @@ def main():
     parser.add_argument("--output-dir", default="training/swift/data")
     parser.add_argument("--multi-view", action="store_true")
     parser.add_argument("--n-views", type=int, default=4)
+    parser.add_argument("--allow-missing-images", action="store_true",
+                        help="允许图片缺失（仅警告，不退出）")
     args = parser.parse_args()
 
     data_dir = Path(args.data_dir).resolve()
@@ -229,13 +236,16 @@ def main():
 
     all_ids = train_ids | test_ids
     q_scene_ids = {qf.stem for qf in question_files}
-    matched = q_scene_ids & all_ids
-    if not matched:
-        logger.error("问题文件与 train/test 场景无交集！请检查 --data-dir 和 --questions-dir 是否匹配")
+
+    # 严格校验: train+test 场景必须都有对应的问题文件
+    missing = all_ids - q_scene_ids
+    if missing:
+        logger.error("以下场景缺少问题文件 (%d 个): %s", len(missing), sorted(missing)[:10])
+        logger.error("请检查 --questions-dir 是否与 --data-dir 匹配，或重新生成问题")
         return
-    unmatched = q_scene_ids - all_ids
-    if unmatched:
-        logger.warning("跳过 %d 个不在 train/test 中的问题文件: %s", len(unmatched), sorted(unmatched)[:5])
+    extra = q_scene_ids - all_ids
+    if extra:
+        logger.warning("跳过 %d 个不在 train/test 中的问题文件", len(extra))
 
     train_samples, test_samples = [], []
     for qf in question_files:
@@ -245,6 +255,13 @@ def main():
             train_samples.extend(samples)
         elif scene_id in test_ids:
             test_samples.extend(samples)
+
+    if _missing_image_count > 0:
+        if args.allow_missing_images:
+            logger.warning("共 %d 张图片缺失（已通过 --allow-missing-images 跳过）", _missing_image_count)
+        else:
+            logger.error("共 %d 张图片缺失，请检查图片目录。使用 --allow-missing-images 跳过此检查", _missing_image_count)
+            return
 
     def write_jsonl(samples, path):
         with open(path, "w") as f:

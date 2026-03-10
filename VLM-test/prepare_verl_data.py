@@ -24,6 +24,7 @@
 import argparse
 import json
 import logging
+import math
 import os
 from pathlib import Path
 
@@ -129,6 +130,52 @@ def get_gt_answer(q: dict):
     return None
 
 
+def _compute_metric(obj_a: dict, obj_b: dict, metric: str) -> float:
+    """计算两个物体间的距离度量值。"""
+    if metric in ("dist3D", "dist3d"):
+        a = obj_a.get("3d_coords", [0, 0, 0])
+        b = obj_b.get("3d_coords", [0, 0, 0])
+        return math.sqrt(sum((ai - bi) ** 2 for ai, bi in zip(a, b)))
+    elif metric in ("dist2D", "dist2d"):
+        a = obj_a.get("pixel_coords", [0, 0])[:2]
+        b = obj_b.get("pixel_coords", [0, 0])[:2]
+        return math.sqrt(sum((ai - bi) ** 2 for ai, bi in zip(a, b)))
+    elif metric in ("depthGap", "depthgap"):
+        da = obj_a.get("pixel_coords", [0, 0, 0])[2] if len(obj_a.get("pixel_coords", [])) > 2 else 0
+        db = obj_b.get("pixel_coords", [0, 0, 0])[2] if len(obj_b.get("pixel_coords", [])) > 2 else 0
+        return abs(da - db)
+    return 0.0
+
+
+def _load_scene_objects(scene_id: str, data_dir: Path) -> dict:
+    """加载场景 JSON，返回 {obj_id: obj_data} 映射。"""
+    scene_file = data_dir / "scenes" / f"{scene_id}.json"
+    if not scene_file.exists():
+        return {}
+    with open(scene_file) as f:
+        scene = json.load(f)
+    return {obj["id"]: obj for obj in scene.get("objects", [])}
+
+
+def _compute_qrr_ratio(q: dict, scene_objects: dict) -> float:
+    """计算 QRR 问题的距离比值 dist(pair1) / dist(pair2)。"""
+    p1a, p1b = q["pair1"]
+    p2a, p2b = q["pair2"]
+    metric = q.get("metric", "dist3D")
+
+    if p1a not in scene_objects or p1b not in scene_objects:
+        return 1.0
+    if p2a not in scene_objects or p2b not in scene_objects:
+        return 1.0
+
+    d1 = _compute_metric(scene_objects[p1a], scene_objects[p1b], metric)
+    d2 = _compute_metric(scene_objects[p2a], scene_objects[p2b], metric)
+
+    if d2 == 0:
+        return float('inf') if d1 > 0 else 1.0
+    return d1 / d2
+
+
 def get_image_paths(scene_id: str, data_dir: Path, multi_view: bool, n_views: int = 4) -> list:
     """返回场景的图片路径列表。"""
     if multi_view:
@@ -143,7 +190,7 @@ def get_image_paths(scene_id: str, data_dir: Path, multi_view: bool, n_views: in
 def build_rl_samples(
     question_file: Path, data_dir: Path, multi_view: bool, n_views: int,
 ) -> list:
-    """RL 模式：每个问题一行，包含 prompt + ground_truth。"""
+    """RL 模式：每个问题一行，包含 prompt + ground_truth（含距离比值用于软评分）。"""
     with open(question_file) as f:
         qdata = json.load(f)
 
@@ -152,6 +199,9 @@ def build_rl_samples(
     images = get_image_paths(scene_id, data_dir, multi_view, n_views)
     obj_text = format_objects(objects)
     split = scene_id.rsplit("_", 1)[0]
+
+    # 加载场景 3D 坐标用于计算距离比值
+    scene_objects = _load_scene_objects(scene_id, data_dir)
 
     if multi_view:
         system = SYSTEM_PROMPT_MULTI_VIEW.format(n_views=n_views)
@@ -169,17 +219,24 @@ def build_rl_samples(
                 {"role": "user", "content": user_text},
             ]
 
+            # 构造 ground truth，QRR 加入距离比值
+            gt_data = {
+                "type": q["type"],
+                "qid": q["qid"],
+                "answer": gt,
+            }
+            if q["type"] == "qrr" and scene_objects:
+                gt_data["ratio"] = round(_compute_qrr_ratio(q, scene_objects), 6)
+            elif q["type"] == "trr":
+                gt_data["angle_deg"] = q.get("gt_angle_deg", 0)
+
             sample = {
                 "data_source": "ordinary-bench",
                 "prompt": prompt,
                 "ability": f"spatial_{q['type']}",
                 "reward_model": {
                     "style": "rule",
-                    "ground_truth": json.dumps({
-                        "type": q["type"],
-                        "qid": q["qid"],
-                        "answer": gt,
-                    }),
+                    "ground_truth": json.dumps(gt_data),
                 },
                 "extra_info": {
                     "scene_id": scene_id,
@@ -208,6 +265,9 @@ def build_sft_samples(
     obj_text = format_objects(objects)
     split = scene_id.rsplit("_", 1)[0]
 
+    # 加载场景 3D 坐标用于计算距离比值
+    scene_objects = _load_scene_objects(scene_id, data_dir)
+
     samples = []
     for batch in qdata["batches"]:
         questions = batch["questions"]
@@ -224,16 +284,21 @@ def build_sft_samples(
             {"role": "user", "content": user_text},
         ]
 
+        # 构造 ground truth，QRR 加入距离比值
+        gt_list = []
+        for q in questions:
+            gt_item = {"qid": q["qid"], "type": q["type"], "answer": get_gt_answer(q)}
+            if q["type"] == "qrr" and scene_objects:
+                gt_item["ratio"] = round(_compute_qrr_ratio(q, scene_objects), 6)
+            gt_list.append(gt_item)
+
         sample = {
             "data_source": "ordinary-bench",
             "prompt": prompt,
             "ability": "spatial_reasoning",
             "reward_model": {
                 "style": "rule",
-                "ground_truth": json.dumps([
-                    {"qid": q["qid"], "type": q["type"], "answer": get_gt_answer(q)}
-                    for q in questions
-                ]),
+                "ground_truth": json.dumps(gt_list),
             },
             "extra_info": {
                 "scene_id": scene_id,

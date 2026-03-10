@@ -33,10 +33,33 @@ def _normalize_qrr_answer(value: str) -> Union[str, None]:
     return mapping.get(normalized)
 
 
+def _extract_from_answer_tag(text: str) -> Union[str, None]:
+    """提取 <answer>...</answer> 标签内容，取最后一个匹配。"""
+    matches = re.findall(r'<answer>(.*?)</answer>', text, re.DOTALL | re.IGNORECASE)
+    if matches:
+        return matches[-1].strip()
+    return None
+
+
 def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
     """从模型回复中解析答案。"""
     text = response.strip()
 
+    # === 优先级 0: <answer> 标签 ===
+    tag_content = _extract_from_answer_tag(text)
+    if tag_content is not None:
+        if question_type == "qrr":
+            normalized = _normalize_qrr_answer(tag_content)
+            if normalized is not None:
+                return normalized
+        elif question_type == "trr":
+            m = re.search(r'\b(\d{1,2})\b', tag_content)
+            if m:
+                val = int(m.group(1))
+                if 1 <= val <= 12:
+                    return val
+
+    # === 以下为现有 regex 回退逻辑 ===
     if question_type == "qrr":
         # 1) JSON 格式: {"answer": "<"}
         m = re.search(r'"answer"\s*:\s*"([^"]+)"', text)

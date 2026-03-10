@@ -51,7 +51,19 @@ if [ "$SCENE_COUNT" -eq 0 ]; then
 fi
 
 Q_COUNT=$(find "$PROJECT_DIR/VLM-test/output/questions" -maxdepth 1 -name '*.json' 2>/dev/null | wc -l | tr -d ' ')
+# 检查问题缓存是否与当前 data-dir 的场景匹配（防止换 data-dir 后复用旧问题）
+REGEN_QUESTIONS=0
 if [ "$Q_COUNT" -ne "$SCENE_COUNT" ]; then
+    REGEN_QUESTIONS=1
+elif [ "$Q_COUNT" -gt 0 ]; then
+    FIRST_SCENE=$(find "$DATA_DIR/scenes" -maxdepth 1 -name '*.json' | sort | head -1 | xargs -I{} basename {} .json)
+    FIRST_Q=$(find "$PROJECT_DIR/VLM-test/output/questions" -maxdepth 1 -name '*.json' | sort | head -1 | xargs -I{} basename {} .json)
+    if [ "$FIRST_SCENE" != "$FIRST_Q" ]; then
+        echo "[1/3] 问题缓存与当前场景不匹配 (场景: $FIRST_SCENE, 缓存: $FIRST_Q)，重新生成"
+        REGEN_QUESTIONS=1
+    fi
+fi
+if [ "$REGEN_QUESTIONS" -eq 1 ]; then
     echo "[1/3] 生成问题 ..."
     "$PYTHON_BIN" generate_questions.py --data "$DATA_DIR"
 else

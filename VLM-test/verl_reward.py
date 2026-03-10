@@ -38,10 +38,22 @@ def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
     text = response.strip()
 
     if question_type == "qrr":
-        for pattern in [r'"answer"\s*:\s*"([^"]+)"', r'\b([<>]|~=|=|≈|lt|gt|eq|approx)\b']:
-            m = re.search(pattern, text)
-            if m:
-                return _normalize_qrr_answer(m.group(1))
+        # 1) JSON 格式: {"answer": "<"}
+        m = re.search(r'"answer"\s*:\s*"([^"]+)"', text)
+        if m:
+            return _normalize_qrr_answer(m.group(1))
+
+        # 2) 文本中的关键词 (lt/gt/eq/approx 需要 word boundary)
+        m = re.search(r'\b(lt|gt|eq|approx|~=)\b', text, re.IGNORECASE)
+        if m:
+            return _normalize_qrr_answer(m.group(1))
+
+        # 3) 独立的 <, >, ~=, ≈, = 符号 (不用 \b，用前后空白/边界)
+        m = re.search(r'(?:^|[\s:=",({])([<>≈]|~=)(?:$|[\s,."\'}):\]])', text)
+        if m:
+            return _normalize_qrr_answer(m.group(1))
+
+        # 4) 整个文本就是答案
         normalized = _normalize_qrr_answer(text)
         if normalized is not None:
             return normalized

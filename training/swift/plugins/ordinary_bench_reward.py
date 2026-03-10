@@ -11,9 +11,30 @@ ORDINARY-BENCH ms-swift 奖励函数插件。
 """
 
 import json
+import logging
 import math
 import re
 from typing import List, Union
+
+logger = logging.getLogger(__name__)
+
+# 解析路径统计（用于监控训练过程中标签采用率）
+_parse_path_counts: dict = {}
+_parse_total = 0
+_PARSE_LOG_INTERVAL = 100
+
+
+def _record_parse_path(path: str):
+    """记录解析路径并定期输出统计。"""
+    global _parse_total
+    _parse_path_counts[path] = _parse_path_counts.get(path, 0) + 1
+    _parse_total += 1
+    if _parse_total % _PARSE_LOG_INTERVAL == 0:
+        tag_pct = _parse_path_counts.get("tag", 0) / _parse_total * 100
+        logger.info(
+            "parse_path_stats total=%d tag=%.1f%% %s",
+            _parse_total, tag_pct, dict(_parse_path_counts),
+        )
 
 
 # ── 核心评分逻辑（与 verl_reward.py 保持一致） ──
@@ -38,7 +59,12 @@ def _extract_from_answer_tag(text: str) -> Union[str, None]:
     return None
 
 
-def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
+def _parse_answer_with_path(response: str, question_type: str) -> tuple:
+    """从模型回复中解析答案，返回 (answer, parse_path)。
+
+    parse_path 取值: tag, json, keyword, symbol, fallback,
+                      context_num, last_num, unparseable
+    """
     text = response.strip()
 
     # === 优先级 0: <answer> 标签 ===
@@ -47,54 +73,59 @@ def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
         if question_type == "qrr":
             normalized = _normalize_qrr_answer(tag_content)
             if normalized is not None:
-                return normalized
+                return normalized, "tag"
         elif question_type == "trr":
             m = re.search(r'\b(\d{1,2})\b', tag_content)
             if m:
                 val = int(m.group(1))
                 if 1 <= val <= 12:
-                    return val
+                    return val, "tag"
 
     # === 以下为现有 regex 回退逻辑 ===
     if question_type == "qrr":
         # 1) JSON 格式: {"answer": "<"}
         m = re.search(r'"answer"\s*:\s*"([^"]+)"', text)
         if m:
-            return _normalize_qrr_answer(m.group(1))
+            return _normalize_qrr_answer(m.group(1)), "json"
         # 2) 文本关键词 (lt/gt/eq/approx 需要 word boundary)
         m = re.search(r'\b(lt|gt|eq|approx|~=)\b', text, re.IGNORECASE)
         if m:
-            return _normalize_qrr_answer(m.group(1))
+            return _normalize_qrr_answer(m.group(1)), "keyword"
         # 3) 独立符号 <, >, ~=, ≈ (不用 \b)
         m = re.search(r'(?:^|[\s:=",({])([<>≈]|~=)(?:$|[\s,."\'}):\]])', text)
         if m:
-            return _normalize_qrr_answer(m.group(1))
+            return _normalize_qrr_answer(m.group(1)), "symbol"
         # 4) 整个文本就是答案
         normalized = _normalize_qrr_answer(text)
         if normalized is not None:
-            return normalized
-        return None
+            return normalized, "fallback"
+        return None, "unparseable"
     elif question_type == "trr":
         # 1) JSON 格式
         m = re.search(r'"answer"\s*:\s*(\d+)', text)
         if m:
             val = int(m.group(1))
             if 1 <= val <= 12:
-                return val
+                return val, "json"
         # 2) 带上下文的数字 (hour/position/at/answer/is + 数字)
         m = re.search(r'(?:hour|position|at|answer|is)\s*[:\s]\s*(\d{1,2})\b', text, re.IGNORECASE)
         if m:
             val = int(m.group(1))
             if 1 <= val <= 12:
-                return val
+                return val, "context_num"
         # 3) 回退: 取最后一个 1-12 范围的数字
         matches = re.findall(r'\b(\d{1,2})\b', text)
         for num_str in reversed(matches):
             val = int(num_str)
             if 1 <= val <= 12:
-                return val
-        return None
-    return None
+                return val, "last_num"
+        return None, "unparseable"
+    return None, "unparseable"
+
+
+def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
+    answer, _ = _parse_answer_with_path(response, question_type)
+    return answer
 
 
 def _hour_to_quadrant(hour: int) -> int:
@@ -148,7 +179,8 @@ def _score_trr(pred_hour: int, gt_hour: int) -> float:
 def _score_single(response: str, gt: dict) -> float:
     q_type = gt["type"]
     gt_answer = gt["answer"]
-    predicted = _parse_answer(response, q_type)
+    predicted, parse_path = _parse_answer_with_path(response, q_type)
+    _record_parse_path(parse_path)
     if predicted is None:
         return 0.0
     if q_type == "qrr":
@@ -188,7 +220,9 @@ class OrdinaryBenchAccuracyORM:
 
 
 class OrdinaryBenchFormatORM:
-    """格式奖励：检查模型输出是否为有效的答案格式。"""
+    """格式奖励：检查模型输出是否为有效答案格式，使用 <answer> 标签可获额外 bonus。"""
+
+    TAG_BONUS = 0.1  # 使用 <answer> 标签的额外奖励，加速模型学会结构化输出
 
     def __call__(self, completions: List[str], solution: List[str], **kwargs) -> List[float]:
         scores = []
@@ -199,8 +233,13 @@ class OrdinaryBenchFormatORM:
                 scores.append(0.0)
                 continue
             q_type = gt.get("type", "")
-            parsed = _parse_answer(completion, q_type)
-            scores.append(1.0 if parsed is not None else 0.0)
+            parsed, path = _parse_answer_with_path(completion, q_type)
+            if parsed is None:
+                scores.append(0.0)
+            elif path == "tag":
+                scores.append(1.0 + self.TAG_BONUS)
+            else:
+                scores.append(1.0)
         return scores
 
 

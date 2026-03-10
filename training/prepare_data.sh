@@ -12,7 +12,8 @@ source "$SCRIPT_DIR/common.sh"
 require_python
 
 DATA_DIR="$PROJECT_DIR/data-gen/output"
-OUTPUT_DIR="$PROJECT_DIR/VLM-test/verl_data_qwen3vl32b"
+OUTPUT_DIR="$PROJECT_DIR/prepared_data/verl/rl"
+SFT_OUTPUT_DIR="$PROJECT_DIR/prepared_data/verl/sft"
 INCLUDE_SFT=0
 MULTI_VIEW=0
 N_VIEWS=4
@@ -21,6 +22,7 @@ while [[ $# -gt 0 ]]; do
     case $1 in
         --data-dir) DATA_DIR="$2"; shift 2 ;;
         --output-dir) OUTPUT_DIR="$2"; shift 2 ;;
+        --sft-output-dir) SFT_OUTPUT_DIR="$2"; shift 2 ;;
         --multi-view) MULTI_VIEW=1; shift ;;
         --n-views) N_VIEWS="$2"; shift 2 ;;
         --include-sft) INCLUDE_SFT=1; shift ;;
@@ -33,7 +35,10 @@ done
 
 echo "=== Qwen3-VL-32B 数据准备 ==="
 echo "数据目录: $DATA_DIR"
-echo "输出目录: $OUTPUT_DIR"
+echo "RL 输出:  $OUTPUT_DIR"
+if [ "$INCLUDE_SFT" -eq 1 ]; then
+    echo "SFT 输出: $SFT_OUTPUT_DIR"
+fi
 echo "多视角:   $MULTI_VIEW (n_views=$N_VIEWS)"
 
 cd "$PROJECT_DIR/VLM-test"
@@ -102,7 +107,7 @@ if [ "$INCLUDE_SFT" -eq 1 ]; then
     "$PYTHON_BIN" prepare_verl_data.py \
         --mode sft \
         --data-dir "$DATA_DIR" \
-        --output-dir "${OUTPUT_DIR}_sft_experimental" \
+        --output-dir "$SFT_OUTPUT_DIR" \
         "${EXTRA_ARGS[@]}"
 fi
 
@@ -110,5 +115,5 @@ echo ""
 echo "=== 数据准备完成 ==="
 echo "GRPO 数据: $OUTPUT_DIR"
 if [ "$INCLUDE_SFT" -eq 1 ]; then
-    echo "SFT 数据:  ${OUTPUT_DIR}_sft_experimental"
+    echo "SFT 数据:  $SFT_OUTPUT_DIR"
 fi

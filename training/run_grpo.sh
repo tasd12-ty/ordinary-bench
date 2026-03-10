@@ -13,8 +13,8 @@ require_python
 MODEL="${MODEL_PATH:-Qwen/Qwen3-VL-32B}"
 N_GPUS="${N_GPUS:-8}"
 CONFIG_NAME="grpo_qwen3vl32b_lora"
-TRAIN_FILE="${TRAIN_FILE:-$PROJECT_DIR/VLM-test/verl_data_qwen3vl32b/train.parquet}"
-VAL_FILE="${VAL_FILE:-$PROJECT_DIR/VLM-test/verl_data_qwen3vl32b/test.parquet}"
+TRAIN_FILE="${TRAIN_FILE:-$PROJECT_DIR/prepared_data/verl/rl/train.parquet}"
+VAL_FILE="${VAL_FILE:-$PROJECT_DIR/prepared_data/verl/rl/test.parquet}"
 REWARD_PATH="${REWARD_PATH:-$PROJECT_DIR/VLM-test/verl_reward.py}"
 
 while [[ $# -gt 0 ]]; do

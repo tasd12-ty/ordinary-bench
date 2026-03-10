@@ -69,7 +69,11 @@ bash training/prepare_data.sh --data-dir ./data-gen/output --multi-view --n-view
 
 输出目录默认是:
 
-- [VLM-test/verl_data_qwen3vl32b](/Users/tsyq/code/ordinary-bench/VLM-test/verl_data_qwen3vl32b)
+- [prepared_data/verl/rl](/Users/tsyq/code/ordinary-bench/prepared_data/verl/rl)
+
+如果加 `--include-sft`，还会额外导出到:
+
+- [prepared_data/verl/sft](/Users/tsyq/code/ordinary-bench/prepared_data/verl/sft)
 
 当前导出的 RL 样本有三个关键点:
 

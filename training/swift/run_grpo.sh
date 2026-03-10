@@ -78,6 +78,9 @@ NPROC_PER_NODE="$N_GPUS" swift rlhf \
     --logging_steps 5 \
     --save_strategy steps \
     --save_steps 50 \
+    --use_vllm true \
+    --vllm_mode colocate \
+    --enable_thinking false \
     --bf16 true \
     --deepspeed zero2 \
     --gradient_checkpointing true \

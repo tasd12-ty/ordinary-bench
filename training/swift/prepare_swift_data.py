@@ -94,12 +94,18 @@ def _compute_qrr_ratio(q: dict, scene_objects: dict) -> float:
 
 def get_image_paths(scene_id: str, data_dir: Path, multi_view: bool, n_views: int) -> list:
     if multi_view:
-        return [
-            str((data_dir / "images" / "multi_view" / scene_id / f"view_{i}.png").resolve())
+        paths = [
+            data_dir / "images" / "multi_view" / scene_id / f"view_{i}.png"
             for i in range(n_views)
         ]
     else:
-        return [str((data_dir / "images" / "single_view" / f"{scene_id}.png").resolve())]
+        paths = [data_dir / "images" / "single_view" / f"{scene_id}.png"]
+    result = []
+    for p in paths:
+        if not p.exists():
+            logger.warning("图片不存在: %s", p)
+        result.append(str(p.resolve()))
+    return result
 
 
 def get_gt_answer(q: dict):

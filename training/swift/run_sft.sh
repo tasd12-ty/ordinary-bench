@@ -57,6 +57,9 @@ NPROC_PER_NODE="$N_GPUS" swift sft \
     --save_strategy epoch \
     --eval_strategy epoch \
     --logging_steps 10 \
+    --enable_thinking false \
+    --add_non_thinking_prefix true \
+    --loss_scale ignore_empty_think \
     --bf16 true \
     --deepspeed zero2 \
     --gradient_checkpointing true \

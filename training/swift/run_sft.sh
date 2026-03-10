@@ -14,6 +14,8 @@ TRAIN_FILE="${TRAIN_FILE:-$PROJECT_DIR/prepared_data/swift/sft/sft_train.jsonl}"
 VAL_FILE="${VAL_FILE:-$PROJECT_DIR/prepared_data/swift/sft/sft_test.jsonl}"
 LORA_RANK="${LORA_RANK:-32}"
 LORA_ALPHA="${LORA_ALPHA:-64}"
+NUM_EPOCHS="${NUM_EPOCHS:-3}"
+OUTPUT_DIR="${OUTPUT_DIR:-$PROJECT_DIR/output/swift_sft_qwen35_27b}"
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -22,6 +24,8 @@ while [[ $# -gt 0 ]]; do
         --train-file) TRAIN_FILE="$2"; shift 2 ;;
         --val-file) VAL_FILE="$2"; shift 2 ;;
         --lora-rank) LORA_RANK="$2"; shift 2 ;;
+        --epochs) NUM_EPOCHS="$2"; shift 2 ;;
+        --output-dir) OUTPUT_DIR="$2"; shift 2 ;;
         *) echo "未知参数: $1"; exit 1 ;;
     esac
 done
@@ -36,7 +40,9 @@ echo "=== Qwen3.5-27B / ms-swift SFT ==="
 echo "模型:      $MODEL"
 echo "GPU:       $N_GPUS"
 echo "LoRA:      rank=$LORA_RANK alpha=$LORA_ALPHA"
+echo "epochs:    $NUM_EPOCHS"
 echo "训练数据:  $TRAIN_FILE"
+echo "输出目录:  $OUTPUT_DIR"
 echo ""
 
 NPROC_PER_NODE="$N_GPUS" swift sft \
@@ -51,7 +57,7 @@ NPROC_PER_NODE="$N_GPUS" swift sft \
     --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps 16 \
     --learning_rate 1e-4 \
-    --num_train_epochs 3 \
+    --num_train_epochs "$NUM_EPOCHS" \
     --max_length 2048 \
     --warmup_ratio 0.05 \
     --save_strategy epoch \
@@ -63,4 +69,4 @@ NPROC_PER_NODE="$N_GPUS" swift sft \
     --bf16 true \
     --deepspeed zero2 \
     --gradient_checkpointing true \
-    --output_dir "$PROJECT_DIR/output/swift_sft_qwen35_27b"
+    --output_dir "$OUTPUT_DIR"

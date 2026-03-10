@@ -86,6 +86,60 @@ bash training/swift/run_sft.sh --gpus 8
 bash training/swift/run_grpo.sh --gpus 8
 ```
 
+## 三组对比实验
+
+### 1. 纯 RL（前期格式奖励高，后期正确性奖励高）
+
+推荐直接拆成两段 GRPO：
+
+```bash
+# Stage 1: 先把输出格式训稳定
+bash training/swift/run_grpo.sh \
+  --gpus 8 \
+  --epochs 1 \
+  --accuracy-weight 0.4 \
+  --format-weight 0.6 \
+  --output-dir output/swift_grpo_qwen35_27b_stage1
+
+# Stage 2: 再把重心切到正确性
+bash training/swift/run_grpo.sh \
+  --gpus 8 \
+  --epochs 4 \
+  --accuracy-weight 0.95 \
+  --format-weight 0.05 \
+  --resume-from-checkpoint output/swift_grpo_qwen35_27b_stage1 \
+  --output-dir output/swift_grpo_qwen35_27b_stage2
+```
+
+`--resume-from-checkpoint` 可以直接传某个 `checkpoint-*` 目录，也可以直接传整个输出目录；脚本会自动选择最新 checkpoint。
+
+### 2. 先 SFT 后 RL
+
+```bash
+# Stage 1: SFT 固化 <answer> 输出格式
+bash training/swift/run_sft.sh \
+  --gpus 8 \
+  --output-dir output/swift_sft_qwen35_27b
+
+# Stage 2: 从 SFT adapter 继续做 GRPO
+bash training/swift/run_grpo.sh \
+  --gpus 8 \
+  --sft-adapter output/swift_sft_qwen35_27b \
+  --accuracy-weight 0.95 \
+  --format-weight 0.05 \
+  --output-dir output/swift_grpo_from_sft_qwen35_27b
+```
+
+`--sft-adapter` 也可以传 `checkpoint-*` 目录，或整个 SFT 输出目录；脚本会自动选择最新 checkpoint，并同时设置 `adapters` 和 `ref_adapters`。
+
+### 3. 全部 SFT
+
+```bash
+bash training/swift/run_sft.sh \
+  --gpus 8 \
+  --output-dir output/swift_sft_only_qwen35_27b
+```
+
 ### GRPO 默认参数
 
 | 参数 | 值 | 说明 |
@@ -98,6 +152,21 @@ bash training/swift/run_grpo.sh --gpus 8
 | `max_prompt_length` | 1536 | 最大 prompt 长度 |
 | `lora_rank` | 32 | LoRA 秩 |
 | `max_grad_norm` | 0.5 | 梯度裁剪（防止训练不稳定） |
+
+`run_grpo.sh` 额外支持：
+
+- `--accuracy-weight` / `--format-weight`: 控制两个 reward 的相对比重
+- `--reward-weights a b`: 等价写法
+- `--resume-from-checkpoint`: 从上一个 GRPO checkpoint 继续
+- `--sft-adapter`: 从 SFT 输出目录或 checkpoint 接入 LoRA adapter
+- `--adapters` / `--ref-adapters`: 手工指定 adapter
+- `--output-dir`: 自定义输出目录
+- `--epochs`: 覆盖默认训练轮数
+
+`run_sft.sh` 额外支持：
+
+- `--output-dir`: 自定义 SFT 输出目录
+- `--epochs`: 覆盖默认训练轮数
 
 ### 全参数训练
 

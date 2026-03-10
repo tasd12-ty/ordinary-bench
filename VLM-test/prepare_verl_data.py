@@ -191,16 +191,16 @@ def _load_scene_objects(scene_id: str, data_dir: Path) -> dict:
     return {obj["id"]: obj for obj in scene.get("objects", [])}
 
 
-def _compute_qrr_ratio(q: dict, scene_objects: dict) -> float:
+def _compute_qrr_ratio(q: dict, scene_objects: dict):
     """计算 QRR 问题的距离比值 dist(pair1) / dist(pair2)。"""
     p1a, p1b = q["pair1"]
     p2a, p2b = q["pair2"]
     metric = q.get("metric", "dist3D")
 
     if p1a not in scene_objects or p1b not in scene_objects:
-        return 1.0
+        return None
     if p2a not in scene_objects or p2b not in scene_objects:
-        return 1.0
+        return None
 
     d1 = _compute_metric(scene_objects[p1a], scene_objects[p1b], metric)
     d2 = _compute_metric(scene_objects[p2a], scene_objects[p2b], metric)

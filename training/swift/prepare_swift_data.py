@@ -77,14 +77,14 @@ def _load_scene_objects(scene_id: str, data_dir: Path) -> dict:
     return {obj["id"]: obj for obj in scene.get("objects", [])}
 
 
-def _compute_qrr_ratio(q: dict, scene_objects: dict) -> float:
+def _compute_qrr_ratio(q: dict, scene_objects: dict):
     p1a, p1b = q["pair1"]
     p2a, p2b = q["pair2"]
     metric = q.get("metric", "dist3D")
     if p1a not in scene_objects or p1b not in scene_objects:
-        return 1.0
+        return None
     if p2a not in scene_objects or p2b not in scene_objects:
-        return 1.0
+        return None
     d1 = _compute_metric(scene_objects[p1a], scene_objects[p1b], metric)
     d2 = _compute_metric(scene_objects[p2a], scene_objects[p2b], metric)
     if d2 == 0:
@@ -183,7 +183,9 @@ def build_samples(question_file: Path, data_dir: Path, multi_view: bool, n_views
                 "answer": get_gt_answer(q),
             }
             if q["type"] == "qrr" and scene_objects:
-                gt_data["ratio"] = round(_compute_qrr_ratio(q, scene_objects), 6)
+                ratio = _compute_qrr_ratio(q, scene_objects)
+                if ratio is not None:
+                    gt_data["ratio"] = round(ratio, 6)
 
             sample = {
                 "images": images,

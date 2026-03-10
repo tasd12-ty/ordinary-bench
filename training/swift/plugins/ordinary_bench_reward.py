@@ -51,12 +51,24 @@ def _parse_answer(response: str, question_type: str) -> Union[str, int, None]:
             return normalized
         return None
     elif question_type == "trr":
-        for pattern in [r'"answer"\s*:\s*(\d+)', r'\b(\d{1,2})\b']:
-            m = re.search(pattern, text)
-            if m:
-                val = int(m.group(1))
-                if 1 <= val <= 12:
-                    return val
+        # 1) JSON 格式
+        m = re.search(r'"answer"\s*:\s*(\d+)', text)
+        if m:
+            val = int(m.group(1))
+            if 1 <= val <= 12:
+                return val
+        # 2) 带上下文的数字 (hour/position/at/answer/is + 数字)
+        m = re.search(r'(?:hour|position|at|answer|is)\s*[:\s]\s*(\d{1,2})\b', text, re.IGNORECASE)
+        if m:
+            val = int(m.group(1))
+            if 1 <= val <= 12:
+                return val
+        # 3) 回退: 取最后一个 1-12 范围的数字
+        matches = re.findall(r'\b(\d{1,2})\b', text)
+        for num_str in reversed(matches):
+            val = int(num_str)
+            if 1 <= val <= 12:
+                return val
         return None
     return None
 
@@ -85,7 +97,8 @@ def _score_qrr_soft(predicted: str, gt_answer: str, ratio: float = None) -> floa
         return 0.0
     closeness = _ratio_closeness(ratio)
     if gt_answer == "~=":
-        return 0.5
+        # GT 是约等于，预测了方向：closeness 高时给多，低时给少
+        return closeness * 0.5
     else:
         if predicted == "~=":
             return closeness * 0.8

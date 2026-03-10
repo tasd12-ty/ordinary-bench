@@ -114,8 +114,12 @@ def format_batch_questions(questions: list) -> str:
     return "\n".join(lines)
 
 
+_missing_image_count = 0
+
+
 def build_image_entries(scene_id: str, data_dir: Path, multi_view: bool, n_views: int = 4) -> list:
     """返回 verl 期望的图片字典列表。"""
+    global _missing_image_count
     if multi_view:
         paths = [
             data_dir / "images" / "multi_view" / scene_id / f"view_{i}.png"
@@ -128,6 +132,7 @@ def build_image_entries(scene_id: str, data_dir: Path, multi_view: bool, n_views
     for path in paths:
         if not path.exists():
             logger.warning("图片不存在: %s", path)
+            _missing_image_count += 1
         images.append({"path": str(path.resolve())})
     return images
 
@@ -345,6 +350,8 @@ def main():
                         help="使用多视角图片")
     parser.add_argument("--n-views", type=int, default=4,
                         help="视角数量 (默认: 4)")
+    parser.add_argument("--allow-missing-images", action="store_true",
+                        help="允许图片缺失（仅警告，不退出）")
     args = parser.parse_args()
 
     data_dir = Path(args.data_dir).resolve()
@@ -399,6 +406,13 @@ def main():
 
     logger.info(f"训练集样本: {len(train_samples)}")
     logger.info(f"测试集样本: {len(test_samples)}")
+
+    if _missing_image_count > 0:
+        if args.allow_missing_images:
+            logger.warning("共 %d 张图片缺失（已通过 --allow-missing-images 跳过）", _missing_image_count)
+        else:
+            logger.error("共 %d 张图片缺失，请检查图片目录。使用 --allow-missing-images 跳过此检查", _missing_image_count)
+            return
 
     def validate_samples(samples: list, mode: str) -> None:
         for idx, sample in enumerate(samples):

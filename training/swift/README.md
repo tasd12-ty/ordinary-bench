@@ -64,6 +64,28 @@ ms-swift 使用 JSONL 格式，每行一个样本：
 
 ## 配置说明
 
+## 服务器最小步骤
+
+如果服务器上只有代码、还没有 `prepared_data/swift`，按默认路径直接执行:
+
+```bash
+git checkout train/swift-qwen35-27b
+bash training/swift/setup.sh
+python training/swift/prepare_swift_data.py --data-dir data-gen/output
+python training/swift/prepare_swift_data.py --mode sft --data-dir data-gen/output
+bash training/swift/run_sft.sh --gpus 8
+bash training/swift/run_grpo.sh --gpus 8
+```
+
+如果你已经把本地的 `prepared_data/swift` 一并同步到服务器，则可以跳过数据准备:
+
+```bash
+git checkout train/swift-qwen35-27b
+bash training/swift/setup.sh
+bash training/swift/run_sft.sh --gpus 8
+bash training/swift/run_grpo.sh --gpus 8
+```
+
 ### GRPO 默认参数
 
 | 参数 | 值 | 说明 |

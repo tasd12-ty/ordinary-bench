@@ -14,10 +14,10 @@
 # 1. 安装环境
 bash training/swift/setup.sh
 
-# 2a. 准备 GRPO 数据（默认）
+# 2a. 准备 GRPO 数据（默认写入 prepared_data/swift/grpo）
 python training/swift/prepare_swift_data.py --data-dir data-gen/output
 
-# 2b. 准备 SFT 数据（如需 SFT 训练）
+# 2b. 准备 SFT 数据（默认写入 prepared_data/swift/sft）
 python training/swift/prepare_swift_data.py --mode sft --data-dir data-gen/output
 
 # 3. GRPO 训练（推荐）
@@ -28,6 +28,9 @@ bash training/swift/run_sft.sh --gpus 8
 ```
 
 > **注意**: 导出的 JSONL 数据中图片路径为绝对路径，迁移到服务器后需重新运行数据准备步骤。
+> 默认输出目录:
+> - `prepared_data/swift/grpo`
+> - `prepared_data/swift/sft`
 
 ## 数据格式
 

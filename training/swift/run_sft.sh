@@ -10,8 +10,8 @@ PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
 MODEL="${MODEL:-Qwen/Qwen3.5-27B}"
 N_GPUS="${N_GPUS:-8}"
-TRAIN_FILE="${TRAIN_FILE:-$PROJECT_DIR/training/swift/data/sft_train.jsonl}"
-VAL_FILE="${VAL_FILE:-$PROJECT_DIR/training/swift/data/sft_test.jsonl}"
+TRAIN_FILE="${TRAIN_FILE:-$PROJECT_DIR/prepared_data/swift/sft/sft_train.jsonl}"
+VAL_FILE="${VAL_FILE:-$PROJECT_DIR/prepared_data/swift/sft/sft_test.jsonl}"
 LORA_RANK="${LORA_RANK:-32}"
 LORA_ALPHA="${LORA_ALPHA:-64}"
 

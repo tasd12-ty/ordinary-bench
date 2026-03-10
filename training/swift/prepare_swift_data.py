@@ -146,7 +146,7 @@ def build_sft_samples(question_file: Path, data_dir: Path, multi_view: bool, n_v
             messages = [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": user_content},
-                {"role": "assistant", "content": str(gt)},
+                {"role": "assistant", "content": f"<answer>{gt}</answer>"},
             ]
 
             sample = {"images": images, "messages": messages}
@@ -205,7 +205,7 @@ def main():
                         help="数据模式: grpo=含solution字段, sft=含assistant回复 (默认: grpo)")
     parser.add_argument("--data-dir", default="data-gen/output")
     parser.add_argument("--questions-dir", default=None)
-    parser.add_argument("--output-dir", default="training/swift/data")
+    parser.add_argument("--output-dir", default=None)
     parser.add_argument("--multi-view", action="store_true")
     parser.add_argument("--n-views", type=int, default=4)
     parser.add_argument("--allow-missing-images", action="store_true",
@@ -214,7 +214,11 @@ def main():
 
     data_dir = Path(args.data_dir).resolve()
     questions_dir = Path(args.questions_dir).resolve() if args.questions_dir else Path("VLM-test/output/questions").resolve()
-    output_dir = Path(args.output_dir)
+    if args.output_dir is None:
+        default_output_dir = "prepared_data/swift/sft" if args.mode == "sft" else "prepared_data/swift/grpo"
+        output_dir = Path(default_output_dir)
+    else:
+        output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     train_file = data_dir / "train_scenes.json"

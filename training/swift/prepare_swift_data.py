@@ -221,6 +221,16 @@ def main():
     build_fn = build_sft_samples if args.mode == "sft" else build_samples
     logger.info(f"模式: {args.mode}")
 
+    all_ids = train_ids | test_ids
+    q_scene_ids = {qf.stem for qf in question_files}
+    matched = q_scene_ids & all_ids
+    if not matched:
+        logger.error("问题文件与 train/test 场景无交集！请检查 --data-dir 和 --questions-dir 是否匹配")
+        return
+    unmatched = q_scene_ids - all_ids
+    if unmatched:
+        logger.warning("跳过 %d 个不在 train/test 中的问题文件: %s", len(unmatched), sorted(unmatched)[:5])
+
     train_samples, test_samples = [], []
     for qf in question_files:
         scene_id = qf.stem

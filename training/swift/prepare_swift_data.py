@@ -29,7 +29,9 @@ Question types:
 2. TRR (clock direction): Imagine standing at ref1, facing toward ref2 (12 o'clock direction).
    Answer with the clock hour (integer 1-12) where the target object appears.
 
-Respond ONLY with the answer. For QRR: "<", "~=", or ">". For TRR: an integer 1-12."""
+Think step by step, then wrap your final answer in <answer> tags.
+For QRR: <answer><</answer>, <answer>~=</answer>, or <answer>></answer>
+For TRR: <answer>7</answer> (integer 1-12)"""
 
 
 def format_objects(objects: list) -> str:

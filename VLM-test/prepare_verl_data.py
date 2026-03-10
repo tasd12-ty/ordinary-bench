@@ -250,7 +250,9 @@ def build_rl_samples(
                 "answer": gt,
             }
             if q["type"] == "qrr" and scene_objects:
-                gt_data["ratio"] = round(_compute_qrr_ratio(q, scene_objects), 6)
+                ratio = _compute_qrr_ratio(q, scene_objects)
+                if ratio is not None:
+                    gt_data["ratio"] = round(ratio, 6)
             elif q["type"] == "trr":
                 gt_data["angle_deg"] = q.get("gt_angle_deg", 0)
 
@@ -310,7 +312,9 @@ def build_sft_samples(
         for q in questions:
             gt_item = {"qid": q["qid"], "type": q["type"], "answer": get_gt_answer(q)}
             if q["type"] == "qrr" and scene_objects:
-                gt_item["ratio"] = round(_compute_qrr_ratio(q, scene_objects), 6)
+                ratio = _compute_qrr_ratio(q, scene_objects)
+                if ratio is not None:
+                    gt_item["ratio"] = round(ratio, 6)
             gt_list.append(gt_item)
 
         sample = {

@@ -110,6 +110,38 @@ def get_gt_answer(q: dict):
     return None
 
 
+def build_sft_samples(question_file: Path, data_dir: Path, multi_view: bool, n_views: int) -> list:
+    """SFT 模式：包含 assistant 回复，不含 solution 字段。"""
+    with open(question_file) as f:
+        qdata = json.load(f)
+
+    scene_id = qdata["scene_id"]
+    objects = qdata["objects"]
+    images = get_image_paths(scene_id, data_dir, multi_view, n_views)
+    obj_text = format_objects(objects)
+
+    n_images = len(images)
+    image_prefix = "\n".join("<image>" for _ in range(n_images))
+
+    samples = []
+    for batch in qdata["batches"]:
+        for q in batch["questions"]:
+            question_text = f"{obj_text}\n\nQuestion:\n{format_single_question(q)}"
+            user_content = f"{image_prefix}\n{question_text}" if n_images > 0 else question_text
+            gt = get_gt_answer(q)
+
+            messages = [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_content},
+                {"role": "assistant", "content": str(gt)},
+            ]
+
+            sample = {"images": images, "messages": messages}
+            samples.append(sample)
+
+    return samples
+
+
 def build_samples(question_file: Path, data_dir: Path, multi_view: bool, n_views: int) -> list:
     with open(question_file) as f:
         qdata = json.load(f)
@@ -153,7 +185,9 @@ def build_samples(question_file: Path, data_dir: Path, multi_view: bool, n_views
 
 
 def main():
-    parser = argparse.ArgumentParser(description="生成 ms-swift GRPO 训练数据")
+    parser = argparse.ArgumentParser(description="生成 ms-swift 训练数据")
+    parser.add_argument("--mode", choices=["grpo", "sft"], default="grpo",
+                        help="数据模式: grpo=含solution字段, sft=含assistant回复 (默认: grpo)")
     parser.add_argument("--data-dir", default="data-gen/output")
     parser.add_argument("--questions-dir", default=None)
     parser.add_argument("--output-dir", default="training/swift/data")
@@ -184,10 +218,13 @@ def main():
         logger.error(f"未找到问题文件: {questions_dir}")
         return
 
+    build_fn = build_sft_samples if args.mode == "sft" else build_samples
+    logger.info(f"模式: {args.mode}")
+
     train_samples, test_samples = [], []
     for qf in question_files:
         scene_id = qf.stem
-        samples = build_samples(qf, data_dir, args.multi_view, args.n_views)
+        samples = build_fn(qf, data_dir, args.multi_view, args.n_views)
         if scene_id in train_ids:
             train_samples.extend(samples)
         elif scene_id in test_ids:
@@ -199,22 +236,27 @@ def main():
                 f.write(json.dumps(s, ensure_ascii=False) + "\n")
         logger.info(f"写入: {path} ({len(samples)} 行)")
 
-    write_jsonl(train_samples, output_dir / "train.jsonl")
-    write_jsonl(test_samples, output_dir / "test.jsonl")
+    prefix = "sft_" if args.mode == "sft" else ""
+    write_jsonl(train_samples, output_dir / f"{prefix}train.jsonl")
+    write_jsonl(test_samples, output_dir / f"{prefix}test.jsonl")
 
     stats = {
+        "mode": args.mode,
         "train_samples": len(train_samples),
         "test_samples": len(test_samples),
         "multi_view": args.multi_view,
-        "train_qrr": sum(1 for s in train_samples if '"type": "qrr"' in s["solution"]),
-        "train_trr": sum(1 for s in train_samples if '"type": "trr"' in s["solution"]),
     }
-    with open(output_dir / "stats.json", "w") as f:
+    if args.mode == "grpo":
+        stats["train_qrr"] = sum(1 for s in train_samples if '"type": "qrr"' in s.get("solution", ""))
+        stats["train_trr"] = sum(1 for s in train_samples if '"type": "trr"' in s.get("solution", ""))
+    with open(output_dir / f"{prefix}stats.json", "w") as f:
         json.dump(stats, f, indent=2)
 
-    print(f"\n=== ms-swift 数据准备完成 ===")
-    print(f"训练集: {len(train_samples)} -> {output_dir / 'train.jsonl'}")
-    print(f"测试集: {len(test_samples)} -> {output_dir / 'test.jsonl'}")
+    train_path = output_dir / f"{prefix}train.jsonl"
+    test_path = output_dir / f"{prefix}test.jsonl"
+    print(f"\n=== ms-swift 数据准备完成 ({args.mode}) ===")
+    print(f"训练集: {len(train_samples)} -> {train_path}")
+    print(f"测试集: {len(test_samples)} -> {test_path}")
 
 
 if __name__ == "__main__":

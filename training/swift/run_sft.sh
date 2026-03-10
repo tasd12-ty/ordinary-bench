@@ -10,8 +10,8 @@ PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
 MODEL="${MODEL:-Qwen/Qwen3.5-27B}"
 N_GPUS="${N_GPUS:-8}"
-TRAIN_FILE="${TRAIN_FILE:-$PROJECT_DIR/training/swift/data/train.jsonl}"
-VAL_FILE="${VAL_FILE:-$PROJECT_DIR/training/swift/data/test.jsonl}"
+TRAIN_FILE="${TRAIN_FILE:-$PROJECT_DIR/training/swift/data/sft_train.jsonl}"
+VAL_FILE="${VAL_FILE:-$PROJECT_DIR/training/swift/data/sft_test.jsonl}"
 LORA_RANK="${LORA_RANK:-32}"
 LORA_ALPHA="${LORA_ALPHA:-64}"
 
@@ -28,7 +28,7 @@ done
 
 if [ ! -f "$TRAIN_FILE" ]; then
     echo "错误: 训练数据不存在: $TRAIN_FILE"
-    echo "请先运行: python training/swift/prepare_swift_data.py --data-dir data-gen/output"
+    echo "请先运行: python training/swift/prepare_swift_data.py --mode sft --data-dir data-gen/output"
     exit 1
 fi
 

@@ -34,6 +34,7 @@ SKIP_EXISTING=false
 DRY_RUN=false
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-4096}"
 CONCURRENCY="${CONCURRENCY:-16}"
+MAX_LORA_RANK="${MAX_LORA_RANK:-32}" # LoRA 最大秩（需 >= 训练时的 rank）
 STARTUP_TIMEOUT=180          # vLLM 启动超时（秒）
 BASE_PORT=8000               # worker 端口从 BASE_PORT + gpu_id 开始
 
@@ -52,6 +53,7 @@ while [[ $# -gt 0 ]]; do
         --max-model-len) MAX_MODEL_LEN="$2";  shift 2 ;;
         --concurrency)   CONCURRENCY="$2";    shift 2 ;;
         --base-port)     BASE_PORT="$2";      shift 2 ;;
+        --max-lora-rank) MAX_LORA_RANK="$2"; shift 2 ;;
         --timeout)       STARTUP_TIMEOUT="$2"; shift 2 ;;
         *) echo "未知参数: $1"; exit 1 ;;
     esac
@@ -244,7 +246,7 @@ worker() {
         )
 
         if [[ -n "$adapter" ]]; then
-            cmd+=(--enable-lora --lora-modules "${model_name}=${adapter}")
+            cmd+=(--enable-lora --max-lora-rank "$MAX_LORA_RANK" --lora-modules "${model_name}=${adapter}")
         else
             cmd+=(--served-model-name "$model_name")
         fi

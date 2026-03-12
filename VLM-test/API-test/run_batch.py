@@ -7,6 +7,8 @@
 
 用法：
     python run_batch.py                        # 全部场景
+    python run_batch.py --test-only            # 只跑测试集（140 场景）
+    python run_batch.py --train-only           # 只跑训练集（560 场景）
     python run_batch.py --split n04            # 指定 split
     python run_batch.py --scene n04_000000     # 单场景
 """
@@ -157,6 +159,11 @@ def main():
     parser = argparse.ArgumentParser(description="方案1：Batch 提问模式")
     parser.add_argument("--split", default=None, help="只跑指定 split（如 n04）")
     parser.add_argument("--scene", default=None, help="只跑单个场景（如 n04_000000）")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--test-only", action="store_true",
+                       help="只跑测试集场景（从 test_scenes.json 读取）")
+    group.add_argument("--train-only", action="store_true",
+                       help="只跑训练集场景（从 train_scenes.json 读取）")
     args = parser.parse_args()
 
     config = CONFIG.copy()
@@ -166,6 +173,7 @@ def main():
 
     # 查找场景文件
     questions_dir = Path(config["questions_dir"])
+    split_file_dir = Path(__file__).resolve().parent.parent.parent / "data-gen" / "output"
     if args.scene:
         scene_ids = [args.scene]
     else:
@@ -173,6 +181,12 @@ def main():
         scene_ids = [f.stem for f in files]
         if args.split:
             scene_ids = [s for s in scene_ids if s.startswith(args.split)]
+        if args.test_only or args.train_only:
+            split_name = "test_scenes.json" if args.test_only else "train_scenes.json"
+            split_path = split_file_dir / split_name
+            with open(split_path) as f:
+                split_ids = {s["scene_id"] for s in json.load(f)}
+            scene_ids = [s for s in scene_ids if s in split_ids]
 
     # 按文件大小降序，让 batch 多的场景先跑，提高并发利用率
     scene_ids.sort(key=lambda s: (questions_dir / f"{s}.json").stat().st_size, reverse=True)

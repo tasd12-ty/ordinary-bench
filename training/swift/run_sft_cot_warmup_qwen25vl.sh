@@ -13,6 +13,10 @@ PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 MODEL="${MODEL:-}"
 STAGE1_CHECKPOINT="${STAGE1_CHECKPOINT:-}"
 MULTI_VIEW="${MULTI_VIEW:-false}"
+TRAIN_TYPE="${TRAIN_TYPE:-full}"
+CHECK_MODEL="${CHECK_MODEL:-}"
+MODEL_TYPE="${MODEL_TYPE:-}"
+TEMPLATE="${TEMPLATE:-}"
 N_GPUS="${N_GPUS:-8}"
 NNODES="${NNODES:-1}"
 NODE_RANK="${NODE_RANK:-0}"
@@ -73,6 +77,10 @@ while [[ $# -gt 0 ]]; do
     case $1 in
         --model) MODEL="$2"; shift 2 ;;
         --stage1-checkpoint) STAGE1_CHECKPOINT="$2"; shift 2 ;;
+        --train-type) TRAIN_TYPE="$2"; shift 2 ;;
+        --check-model) CHECK_MODEL="$2"; shift 2 ;;
+        --model-type) MODEL_TYPE="$2"; shift 2 ;;
+        --template) TEMPLATE="$2"; shift 2 ;;
         --gpus) N_GPUS="$2"; shift 2 ;;
         --nnodes) NNODES="$2"; shift 2 ;;
         --node-rank) NODE_RANK="$2"; shift 2 ;;
@@ -121,6 +129,7 @@ echo "=== ms-swift CoT SFT warmup (Qwen2.5-VL) ==="
 echo "模型:        $MODEL"
 echo "GPU:         $N_GPUS"
 echo "节点:        $NNODES (node_rank=$NODE_RANK)"
+echo "train_type:  $TRAIN_TYPE"
 echo "训练数据:    $TRAIN_FILE"
 echo "验证数据:    $VAL_FILE"
 echo "epochs:      $NUM_EPOCHS"
@@ -134,6 +143,11 @@ echo "thinking:    false (Qwen2.5-VL 无原生 thinking)"
 echo "输出目录:    $OUTPUT_DIR"
 echo ""
 
+EXTRA_ARGS=()
+[ -n "$CHECK_MODEL" ] && EXTRA_ARGS+=(--check_model "$CHECK_MODEL")
+[ -n "$MODEL_TYPE" ] && EXTRA_ARGS+=(--model_type "$MODEL_TYPE")
+[ -n "$TEMPLATE" ] && EXTRA_ARGS+=(--template "$TEMPLATE")
+
 env \
     NPROC_PER_NODE="$N_GPUS" \
     NNODES="$NNODES" \
@@ -142,7 +156,8 @@ env \
     MASTER_PORT="$MASTER_PORT" \
     swift sft \
     --model "$MODEL" \
-    --train_type full \
+    "${EXTRA_ARGS[@]}" \
+    --train_type "$TRAIN_TYPE" \
     --dataset "$TRAIN_FILE" \
     --val_dataset "$VAL_FILE" \
     --per_device_train_batch_size 1 \

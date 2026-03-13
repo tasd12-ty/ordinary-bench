@@ -15,6 +15,9 @@ MODEL="${MODEL:-}"
 COT_SFT_CHECKPOINT="${COT_SFT_CHECKPOINT:-}"
 RESUME_FROM_CHECKPOINT="${RESUME_FROM_CHECKPOINT:-}"
 MULTI_VIEW="${MULTI_VIEW:-false}"
+CHECK_MODEL="${CHECK_MODEL:-}"
+MODEL_TYPE="${MODEL_TYPE:-}"
+TEMPLATE="${TEMPLATE:-}"
 N_GPUS="${N_GPUS:-8}"
 NNODES="${NNODES:-1}"
 NODE_RANK="${NODE_RANK:-0}"
@@ -88,6 +91,9 @@ while [[ $# -gt 0 ]]; do
         --model) MODEL="$2"; shift 2 ;;
         --cot-sft-checkpoint) COT_SFT_CHECKPOINT="$2"; shift 2 ;;
         --resume-from-checkpoint) RESUME_FROM_CHECKPOINT="$2"; shift 2 ;;
+        --check-model) CHECK_MODEL="$2"; shift 2 ;;
+        --model-type) MODEL_TYPE="$2"; shift 2 ;;
+        --template) TEMPLATE="$2"; shift 2 ;;
         --gpus) N_GPUS="$2"; shift 2 ;;
         --nnodes) NNODES="$2"; shift 2 ;;
         --node-rank) NODE_RANK="$2"; shift 2 ;;
@@ -166,6 +172,9 @@ fi
 echo ""
 
 EXTRA_ARGS=()
+[ -n "$CHECK_MODEL" ] && EXTRA_ARGS+=(--check_model "$CHECK_MODEL")
+[ -n "$MODEL_TYPE" ] && EXTRA_ARGS+=(--model_type "$MODEL_TYPE")
+[ -n "$TEMPLATE" ] && EXTRA_ARGS+=(--template "$TEMPLATE")
 if [ -n "$RESUME_FROM_CHECKPOINT" ]; then
     EXTRA_ARGS+=(--resume_from_checkpoint "$RESUME_FROM_CHECKPOINT")
 fi

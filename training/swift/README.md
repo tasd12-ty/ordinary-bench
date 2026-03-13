@@ -266,3 +266,46 @@ print(f'think 出现率: {has_think}/{total} = {has_think/total*100:.1f}%')
 3. **训练方法** — GRPO vs SFT vs CoT-GRPO 对空间推理能力的提升效果
 4. **CoT 策略** — 原生 thinking vs SFT 学习的 `<think>` 对推理质量的影响
 5. **模型规模** — 27B vs 7B 在结构化空间推理任务上的能力差距
+
+## 多视角训练
+
+每个场景有 4 个不同视角的渲染图（`data-gen/output/images/multi_view/`），多视角训练让模型同时看到所有视角来推理 3D 空间关系。
+
+### 数据准备
+
+```bash
+# CoT SFT 多视角数据
+python training/swift/prepare_swift_data.py \
+  --mode cot-sft --multi-view --n-views 4 \
+  --data-dir data-gen/output \
+  --output-dir prepared_data/swift/cot_sft_mv
+
+# CoT GRPO 多视角数据
+python training/swift/prepare_swift_data.py \
+  --mode cot-grpo --multi-view --n-views 4 \
+  --data-dir data-gen/output \
+  --output-dir prepared_data/swift/cot_grpo_mv
+```
+
+### 训练
+
+```bash
+# SFT warmup
+bash training/swift/run_sft_cot_warmup_qwen25vl.sh --multi-view --gpus 8
+
+# GRPO（从 warmup checkpoint 继续）
+bash training/swift/run_grpo_cot_qwen25vl.sh \
+  --multi-view \
+  --cot-sft-checkpoint output/swift_cot_sft_warmup_qwen25vl_mv \
+  --gpus 8
+```
+
+### 单视角 vs 多视角参数差异
+
+| 参数 | 单视角 | 多视角（4 views） | 原因 |
+|------|--------|-------------------|------|
+| `MAX_PROMPT_LENGTH` | 2048 | 4096 | 4 图 ~1200 视觉 token |
+| `MAX_LENGTH`（SFT） | 4096 | 8192 | 同上 |
+| `VLLM_MAX_NUM_SEQS` | 32 | 16 | 每序列显存翻倍 |
+| `VLLM_GPU_MEMORY_UTILIZATION` | 0.45 | 0.35 | 训练侧需更多显存 |
+| `GRAD_ACCUM_STEPS` | 8 | 16 | 补偿 batch 缩小 |

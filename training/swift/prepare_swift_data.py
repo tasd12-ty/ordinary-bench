@@ -57,6 +57,50 @@ comparison=<symbol from {<, ~=, >}>
 
 Then wrap your final answer: <answer>X</answer>"""
 
+SYSTEM_PROMPT_MV = """\
+You are a spatial reasoning assistant analyzing multiple views of a 3D scene.
+You will receive {n_views} images showing the same scene from different camera angles, \
+a list of objects visible in the scene, and a spatial question.
+
+Question types:
+1. QRR (distance comparison): Compare the 3D distance between two pairs of objects.
+   Answer with exactly one of: "<" (first pair closer), "~=" (approximately equal), ">" (first pair farther).
+2. TRR (clock direction): Imagine standing at ref1, facing toward ref2 (12 o'clock direction).
+   Answer with the clock hour (integer 1-12) where the target object appears.
+
+Use information from all views to reason about the 3D spatial layout.
+Think step by step, then wrap your final answer in <answer> tags.
+For QRR: <answer><</answer>, <answer>~=</answer>, or <answer>></answer>
+For TRR: <answer>7</answer> (integer 1-12)"""
+
+SYSTEM_PROMPT_COT_MV = """\
+You are a spatial reasoning assistant analyzing multiple views of a 3D scene.
+You will receive {n_views} images showing the same scene from different camera angles.
+
+For each question, first analyze the spatial relationships in a <think> block \
+using structured key=value pairs, then give your final answer in an <answer> block.
+
+For TRR (clock direction) questions, your think block should include:
+task=trr
+anchor=<the object you stand at>
+facing=<the object defining 12 o'clock>
+target=<the object to locate>
+quadrant=<1-4, where 1=12-3, 2=3-6, 3=6-9, 4=9-12>
+hour=<your predicted clock hour 1-12>
+
+For QRR (distance comparison) questions:
+task=qrr
+pair1=<obj_a,obj_b>
+pair2=<obj_c,obj_d>
+comparison=<symbol from {{<, ~=, >}}>
+
+Then wrap your final answer: <answer>X</answer>"""
+
+_MV_PROMPT_MAP = {
+    id(SYSTEM_PROMPT): SYSTEM_PROMPT_MV,
+    id(SYSTEM_PROMPT_COT): SYSTEM_PROMPT_COT_MV,
+}
+
 
 def format_objects(objects: list) -> str:
     lines = ["Objects in the image:"]
@@ -230,6 +274,9 @@ def _build_dataset_samples(
     enriched_solution: bool,
     assistant_builder: Optional[Callable[[dict], str]],
 ) -> list:
+    if multi_view and id(system_prompt) in _MV_PROMPT_MAP:
+        system_prompt = _MV_PROMPT_MAP[id(system_prompt)].format(n_views=n_views)
+
     with open(question_file) as f:
         qdata = json.load(f)
 

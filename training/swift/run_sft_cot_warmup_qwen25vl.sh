@@ -12,6 +12,7 @@ PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
 MODEL="${MODEL:-}"
 STAGE1_CHECKPOINT="${STAGE1_CHECKPOINT:-}"
+MULTI_VIEW="${MULTI_VIEW:-false}"
 N_GPUS="${N_GPUS:-8}"
 NNODES="${NNODES:-1}"
 NODE_RANK="${NODE_RANK:-0}"
@@ -84,11 +85,23 @@ while [[ $# -gt 0 ]]; do
         --max-length) MAX_LENGTH="$2"; shift 2 ;;
         --max-steps) MAX_STEPS="$2"; shift 2 ;;
         --save-steps) SAVE_STEPS="$2"; shift 2 ;;
+        --multi-view) MULTI_VIEW=true; shift 1 ;;
         --output-dir) OUTPUT_DIR="$2"; shift 2 ;;
         --barrier-dir) BARRIER_DIR="$2"; shift 2 ;;
         *) echo "未知参数: $1"; exit 1 ;;
     esac
 done
+
+# 多视角覆盖默认值（仅当用户未通过 --train-file 等显式指定时）
+if [ "$MULTI_VIEW" = "true" ]; then
+    [ "$TRAIN_FILE" = "$PROJECT_DIR/prepared_data/swift/cot_sft/cot_sft_train.jsonl" ] && \
+        TRAIN_FILE="$PROJECT_DIR/prepared_data/swift/cot_sft_mv/cot_sft_train.jsonl"
+    [ "$VAL_FILE" = "$PROJECT_DIR/prepared_data/swift/cot_sft/cot_sft_test.jsonl" ] && \
+        VAL_FILE="$PROJECT_DIR/prepared_data/swift/cot_sft_mv/cot_sft_test.jsonl"
+    [ "$MAX_LENGTH" = "4096" ] && MAX_LENGTH=8192
+    [ "$OUTPUT_DIR" = "$PROJECT_DIR/output/swift_cot_sft_warmup_qwen25vl" ] && \
+        OUTPUT_DIR="$PROJECT_DIR/output/swift_cot_sft_warmup_qwen25vl_mv"
+fi
 
 if [ -z "$MODEL" ] && [ -n "$STAGE1_CHECKPOINT" ]; then
     MODEL="$STAGE1_CHECKPOINT"
@@ -116,6 +129,7 @@ echo "max_length:  $MAX_LENGTH"
 echo "max_steps:   $MAX_STEPS"
 echo "save_steps:  $SAVE_STEPS"
 echo "deepspeed:   $DEEPSPEED_STAGE"
+echo "multi_view:  $MULTI_VIEW"
 echo "thinking:    false (Qwen2.5-VL 无原生 thinking)"
 echo "输出目录:    $OUTPUT_DIR"
 echo ""

@@ -14,6 +14,7 @@ PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 MODEL="${MODEL:-}"
 COT_SFT_CHECKPOINT="${COT_SFT_CHECKPOINT:-}"
 RESUME_FROM_CHECKPOINT="${RESUME_FROM_CHECKPOINT:-}"
+MULTI_VIEW="${MULTI_VIEW:-false}"
 N_GPUS="${N_GPUS:-8}"
 NNODES="${NNODES:-1}"
 NODE_RANK="${NODE_RANK:-0}"
@@ -103,11 +104,26 @@ while [[ $# -gt 0 ]]; do
         --reasoning-weight) REASONING_WEIGHT="$2"; shift 2 ;;
         --format-weight) FORMAT_WEIGHT="$2"; shift 2 ;;
         --reward-weights) ACCURACY_WEIGHT="$2"; REASONING_WEIGHT="$3"; FORMAT_WEIGHT="$4"; shift 4 ;;
+        --multi-view) MULTI_VIEW=true; shift 1 ;;
         --output-dir) OUTPUT_DIR="$2"; shift 2 ;;
         --barrier-dir) BARRIER_DIR="$2"; shift 2 ;;
         *) echo "未知参数: $1"; exit 1 ;;
     esac
 done
+
+# 多视角覆盖默认值（仅当用户未通过 --train-file 等显式指定时）
+if [ "$MULTI_VIEW" = "true" ]; then
+    [ "$TRAIN_FILE" = "$PROJECT_DIR/prepared_data/swift/cot_grpo/train.jsonl" ] && \
+        TRAIN_FILE="$PROJECT_DIR/prepared_data/swift/cot_grpo_mv/train.jsonl"
+    [ "$VAL_FILE" = "$PROJECT_DIR/prepared_data/swift/cot_grpo/test.jsonl" ] && \
+        VAL_FILE="$PROJECT_DIR/prepared_data/swift/cot_grpo_mv/test.jsonl"
+    [ "$MAX_PROMPT_LENGTH" = "2048" ] && MAX_PROMPT_LENGTH=4096
+    [ "$VLLM_MAX_NUM_SEQS" = "32" ] && VLLM_MAX_NUM_SEQS=16
+    [ "$VLLM_GPU_MEMORY_UTILIZATION" = "0.45" ] && VLLM_GPU_MEMORY_UTILIZATION=0.35
+    [ "$GRAD_ACCUM_STEPS" = "8" ] && GRAD_ACCUM_STEPS=16
+    [ "$OUTPUT_DIR" = "$PROJECT_DIR/output/swift_cot_grpo_qwen25vl" ] && \
+        OUTPUT_DIR="$PROJECT_DIR/output/swift_cot_grpo_qwen25vl_mv"
+fi
 
 if [ -z "$MODEL" ] && [ -n "$COT_SFT_CHECKPOINT" ]; then
     MODEL="$COT_SFT_CHECKPOINT"
@@ -140,6 +156,7 @@ echo "generations: $NUM_GENERATIONS"
 echo "epochs:      $NUM_EPOCHS"
 echo "reward:      accuracy=$ACCURACY_WEIGHT reasoning=$REASONING_WEIGHT format=$FORMAT_WEIGHT"
 echo "beta:        $BETA"
+echo "multi_view:  $MULTI_VIEW"
 echo "deepspeed:   $DEEPSPEED_STAGE"
 echo "thinking:    false (Qwen2.5-VL 无原生 thinking)"
 echo "输出目录:    $OUTPUT_DIR"

@@ -39,8 +39,7 @@ EPSILON="${EPSILON:-0.2}"
 WARMUP_RATIO="${WARMUP_RATIO:-0.05}"
 GRAD_ACCUM_STEPS="${GRAD_ACCUM_STEPS:-8}"
 ACCURACY_WEIGHT="${ACCURACY_WEIGHT:-1.0}"
-REASONING_WEIGHT="${REASONING_WEIGHT:-0.3}"
-FORMAT_WEIGHT="${FORMAT_WEIGHT:-0.10}"
+FORMAT_WEIGHT="${FORMAT_WEIGHT:-1.0}"
 VLLM_GPU_MEMORY_UTILIZATION="${VLLM_GPU_MEMORY_UTILIZATION:-0.45}"
 VLLM_MAX_NUM_SEQS="${VLLM_MAX_NUM_SEQS:-32}"
 OUTPUT_DIR="${OUTPUT_DIR:-$PROJECT_DIR/output/swift_cot_grpo_qwen25vl}"
@@ -107,9 +106,8 @@ while [[ $# -gt 0 ]]; do
         --max-completion-length) MAX_COMPLETION_LENGTH="$2"; shift 2 ;;
         --max-prompt-length) MAX_PROMPT_LENGTH="$2"; shift 2 ;;
         --accuracy-weight) ACCURACY_WEIGHT="$2"; shift 2 ;;
-        --reasoning-weight) REASONING_WEIGHT="$2"; shift 2 ;;
         --format-weight) FORMAT_WEIGHT="$2"; shift 2 ;;
-        --reward-weights) ACCURACY_WEIGHT="$2"; REASONING_WEIGHT="$3"; FORMAT_WEIGHT="$4"; shift 4 ;;
+        --reward-weights) ACCURACY_WEIGHT="$2"; FORMAT_WEIGHT="$3"; shift 3 ;;
         --multi-view) MULTI_VIEW=true; shift 1 ;;
         --output-dir) OUTPUT_DIR="$2"; shift 2 ;;
         --barrier-dir) BARRIER_DIR="$2"; shift 2 ;;
@@ -160,7 +158,7 @@ echo "验证数据:    $VAL_FILE"
 echo "奖励插件:    $PLUGIN_PATH"
 echo "generations: $NUM_GENERATIONS"
 echo "epochs:      $NUM_EPOCHS"
-echo "reward:      accuracy=$ACCURACY_WEIGHT reasoning=$REASONING_WEIGHT format=$FORMAT_WEIGHT"
+echo "reward:      accuracy=$ACCURACY_WEIGHT format=$FORMAT_WEIGHT"
 echo "beta:        $BETA"
 echo "multi_view:  $MULTI_VIEW"
 echo "deepspeed:   $DEEPSPEED_STAGE"
@@ -192,8 +190,8 @@ env \
     --model "$MODEL" \
     "${EXTRA_ARGS[@]}" \
     --external_plugins "$PLUGIN_PATH" \
-    --reward_funcs ordinary_bench_cot_accuracy ordinary_bench_cot_reasoning ordinary_bench_cot_format \
-    --reward_weights "$ACCURACY_WEIGHT" "$REASONING_WEIGHT" "$FORMAT_WEIGHT" \
+    --reward_funcs ordinary_bench_cot_accuracy ordinary_bench_cot_format \
+    --reward_weights "$ACCURACY_WEIGHT" "$FORMAT_WEIGHT" \
     --dataset "$TRAIN_FILE" \
     --val_dataset "$VAL_FILE" \
     --num_generations "$NUM_GENERATIONS" \

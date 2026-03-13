@@ -1,6 +1,10 @@
-# Qwen3.5-27B + ms-swift
+# ORDINARY-BENCH ms-swift 训练
 
-使用 ms-swift 框架训练 Qwen3.5-27B 完成 ORDINARY-BENCH 空间推理任务。
+使用 ms-swift 框架训练 VLM 完成 ORDINARY-BENCH 空间推理任务。
+
+支持模型：
+- **Qwen3.5-27B** — 原生 thinking 模式，全参数/LoRA
+- **Qwen2.5-VL-7B** — 无原生 thinking，通过 SFT warmup 学习 `<think>` 格式
 
 ## 为什么用 ms-swift 而不是 verl？
 
@@ -174,27 +178,91 @@ bash training/swift/run_sft.sh \
 bash training/swift/run_grpo.sh --full --gpus 8
 ```
 
+## Qwen2.5-VL-7B CoT 训练
+
+Qwen2.5-VL 无原生 thinking 模式，`<think>...</think>` 作为纯文本结构由 SFT warmup 教会。
+
+### 快速开始
+
+```bash
+# 1. 准备 CoT 数据（两个模型共用）
+python training/swift/prepare_swift_data.py --mode cot-sft --data-dir data-gen/output
+python training/swift/prepare_swift_data.py --mode cot-grpo --data-dir data-gen/output
+
+# 2. CoT SFT warmup（300 步，学习 <think> 格式）
+bash training/swift/run_sft_cot_warmup_qwen25vl.sh --gpus 8
+
+# 3. CoT GRPO（从 warmup checkpoint 继续）
+bash training/swift/run_grpo_cot_qwen25vl.sh \
+  --cot-sft-checkpoint output/swift_cot_sft_warmup_qwen25vl \
+  --gpus 8
+```
+
+### CoT 策略：有/无原生 Thinking 模式
+
+| 维度 | Qwen3.5-27B | Qwen2.5-VL-7B |
+|------|-------------|----------------|
+| `enable_thinking` | `true` | `false` |
+| `<think>` 来源 | 模型内置 special token | SFT 学到的纯文本标签 |
+| SFT warmup 步数 | 200 | 300（需额外学格式） |
+| GRPO format_weight | 0.05 | 0.10（防格式退化） |
+| DeepSpeed | zero3 | zero2（7B 无需 zero3） |
+| GRPO beta（KL 惩罚） | 0.001 | 0.005（防 collapse） |
+| GRPO learning_rate | 5e-7 | 1e-6 |
+| vllm_gpu_memory_util | 0.20 | 0.45（7B headroom 大） |
+
+> **监控信号**：通过 rollout 日志观察 SFT warmup 后的输出。如果 `<think>` 出现率 < 80%，增加 warmup 步数或加第二轮 SFT epoch。
+
+## Rollout 日志
+
+CoT GRPO 脚本自动记录模型输出采样到 `{output_dir}/rollout_log.jsonl`，便于离线分析。
+
+每 50 次奖励计算采样 4 条，记录：completions、三项奖励分数、think keys、parse path。
+
+```bash
+# 实时监控
+tail -f output/swift_cot_grpo_qwen25vl/rollout_log.jsonl | python3 -m json.tool
+
+# 统计 <think> 出现率
+python3 -c "
+import json
+lines = open('output/swift_cot_grpo_qwen25vl/rollout_log.jsonl').readlines()
+total = sum(len(json.loads(l)['samples']) for l in lines)
+has_think = sum(1 for l in lines for s in json.loads(l)['samples'] if '<think>' in s['completion'])
+print(f'think 出现率: {has_think}/{total} = {has_think/total*100:.1f}%')
+"
+```
+
+通过环境变量 `ROLLOUT_LOG_DIR` 控制日志路径，GRPO 脚本默认设为 `$OUTPUT_DIR`。
+
 ## 硬件需求
 
-| 模式 | GPU 显存 | 8×80GB |
-|------|---------|--------|
-| LoRA GRPO (n=4) | ~35GB/卡 | 充裕 |
-| 全参数 GRPO (n=4) | ~55GB/卡 | 可行 |
-| LoRA SFT | ~10GB/卡 | 充裕 |
+| 模式 | 模型 | GPU 显存 | 8×80GB |
+|------|------|---------|--------|
+| LoRA GRPO (n=4) | Qwen3.5-27B | ~35GB/卡 | 充裕 |
+| 全参数 GRPO (n=4) | Qwen3.5-27B | ~55GB/卡 | 可行 |
+| 全参数 CoT SFT | Qwen3.5-27B | ~45GB/卡 | 可行 |
+| 全参数 CoT GRPO (n=8) | Qwen3.5-27B | ~60GB/卡 | 可行 |
+| 全参数 CoT SFT | Qwen2.5-VL-7B | ~20GB/卡 | 充裕 |
+| 全参数 CoT GRPO (n=8) | Qwen2.5-VL-7B | ~35GB/卡 | 充裕 |
+| LoRA SFT | Qwen3.5-27B | ~10GB/卡 | 充裕 |
 
 ## 对比实验设计
 
 本分支与 `train/verl-qwen3vl-32b` 分支配合使用：
 
-| 维度 | verl 分支 | swift 分支 |
-|------|----------|-----------|
-| 模型 | Qwen3-VL-32B | Qwen3.5-27B |
-| 框架 | verl | ms-swift |
-| 训练 | GRPO + LoRA | GRPO + LoRA / SFT |
-| 数据 | 相同的 700 场景 / 327K 问题 | 相同 |
-| 评分 | 相同的软评分 reward | 相同 |
+| 维度 | verl 分支 | swift 分支 (Qwen3.5) | swift 分支 (Qwen2.5-VL) |
+|------|----------|-----------|-----------|
+| 模型 | Qwen3-VL-32B | Qwen3.5-27B | Qwen2.5-VL-7B |
+| 框架 | verl | ms-swift | ms-swift |
+| 训练 | GRPO + LoRA | GRPO + LoRA / SFT | CoT SFT → GRPO |
+| Thinking | N/A | 原生 thinking | SFT 学习 `<think>` |
+| 数据 | 相同的 700 场景 / 327K 问题 | 相同 | 相同 |
+| 评分 | 相同的软评分 reward | 相同 | 相同（+CoT reward） |
 
-通过在相同数据上训练两个不同模型，可以分析：
+通过在相同数据上训练多个模型，可以分析：
 1. **数据量是否充足** — 学习曲线是否饱和
-2. **架构差异** — Qwen3-VL vs Qwen3.5 原生多模态在空间推理上的表现差异
-3. **训练方法** — GRPO vs SFT 对空间推理能力的提升效果
+2. **架构差异** — Qwen3-VL vs Qwen3.5 vs Qwen2.5-VL 在空间推理上的表现
+3. **训练方法** — GRPO vs SFT vs CoT-GRPO 对空间推理能力的提升效果
+4. **CoT 策略** — 原生 thinking vs SFT 学习的 `<think>` 对推理质量的影响
+5. **模型规模** — 27B vs 7B 在结构化空间推理任务上的能力差距
